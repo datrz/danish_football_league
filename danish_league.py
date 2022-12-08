@@ -15,10 +15,10 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data_BuLi_13_20_cleaned.csv")
 types = ["Mean","Absolute","Median","Maximum","Minimum"]
-label_attr_dict = {"Goals":"goals","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal","Passes":"total_passes", "Successful Passes":"success_passes", "Failed Passes":"failed_passes", "Pass Success Ratio":"pass_ratio", "Ball Possession":"possession", "Tackle Success Ratio":"tackle_ratio", "Fouls Committed":"fouls", "Fouls Received":"got_fouled", "Offsides":"offside", "Corners":"corners"}
-label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received","Shots on opposing Goal":"shots_on_goal","Shots on own Goal":"shots_on_goal_received","Passes":"total_passes", "Successful Passes":"success_passes", "Failed Passes":"failed_passes", "Pass Success Ratio":"pass_ratio", "Ball Possession":"possession", "Tackle Success Ratio":"tackle_ratio", "Fouls Committed":"fouls", "Fouls Received":"got_fouled", "Offsides":"offside", "Corners":"corners"}
-label_attr_dict_correlation = {"Goals":"delta_goals", "Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Passes":"delta_total_passes","Pass Sucess Ratio":"delta_pass_ratio","Possession":"delta_possession","Tackle Success Ratio":"delta_tackle_ratio","Fouls":"delta_fouls","Offside":"delta_offside","Corners":"delta_corners"}
-label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"total passes":'total_passes',"pass ratio":'pass_ratio',"possession ratio":'possession',"successful tackle ratio":'tackle_ratio',"fouls":'fouls',"offsides":'offside',"corners":'corners'}
+label_attr_dict = {"Goals":"goals","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal", "Ball Possession":"possession", "Fouls Committed":"fouls", "Fouls Received":"got_fouled", "Offsides":"offside", "Corners":"corners"}
+label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received","Shots on opposing Goal":"shots_on_goal","Shots on own Goal":"shots_on_goal_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Fouls Received":"got_fouled", "Offsides":"offside", "Corners":"corners"}
+label_attr_dict_correlation = {"Goals":"delta_goals", "Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Possession":"delta_possession","Fouls":"delta_fouls","Offside":"delta_offside","Corners":"delta_corners"}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"offsides":'offside',"corners":'corners'}
 
 ### Helper Methods ###
 def get_unique_seasons_modified(df_data):
@@ -67,7 +67,7 @@ def filter_teams(df_data):
 
 def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
-    delta_names = ['goals','ht_goals','shots_on_goal','total_passes','pass_ratio','possession','tackle_ratio','fouls','offside','corners']
+    delta_names = ['goals','ht_goals','shots_on_goal','possession','fouls','offside','corners']
     for column in delta_names:
         h_delta_column = 'h_delta_'+ column
         a_delta_column = 'a_delta_'+ column
@@ -76,10 +76,10 @@ def stack_home_away_dataframe(df_data):
         df_data[h_delta_column] = df_data[h_column]-df_data[a_column]
         df_data[a_delta_column] = df_data[a_column]-df_data[h_column]
     #st.dataframe(data=df_data)
-    column_names = ['total_passes','success_passes','failed_passes','pass_ratio','possession','tackle_ratio','offside','corners','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_total_passes','delta_pass_ratio','delta_possession','delta_tackle_ratio','delta_fouls','delta_offside','delta_corners']
+    column_names = ['possession','offside','corners','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_possession','delta_fouls','delta_offside','delta_corners']
     h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on_goal','a_shots_on_goal','h_fouls','a_fouls']
     a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on_goal','h_shots_on_goal','a_fouls','h_fouls']
-    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on_goal','shots_on_goal_received','fouls','got_fouled','total_passes','success_passes','failed_passes','pass_ratio','possession','tackle_ratio','offside','corners','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_total_passes','delta_pass_ratio','delta_possession','delta_tackle_ratio','delta_fouls','delta_offside','delta_corners']
+    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on_goal','shots_on_goal_received','fouls','got_fouled','possession','offside','corners','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_possession','delta_fouls','delta_offside','delta_corners']
     for column in column_names: 
         h_column_names.append("h_" + column)
         a_column_names.append("a_" + column)
@@ -90,14 +90,14 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','total_passes','delta_total_passes','success_passes','failed_passes','pass_ratio','delta_pass_ratio','possession','delta_possession','tackle_ratio','delta_tackle_ratio','fouls','got_fouled','delta_fouls','offside','delta_offside','corners','delta_corners']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','offside','delta_offside','corners','delta_corners']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
     df_data = df_data_filtered
     df_return = pd.DataFrame()
     if(measure == "Absolute"):
-        if(attribute == "pass_ratio" or attribute == "tackle_ratio" or attribute == "possession"):
+        if(attribute == "possession"):
             measure = "Mean"
         else:
             df_return = df_data.groupby([aspect]).sum()            
@@ -152,7 +152,7 @@ def plot_x_per_season(attr,measure):
         y_str = measure + " " + attr + " by a Team"
         
     ax.set(xlabel = "Season", ylabel = y_str)
-    if measure == "Mean" or attribute in ["pass_ratio","possession","tackle_ratio"]:
+    if measure == "Mean" or attribute in ["possession"]:
         for p in ax.patches:
             ax.annotate(format(p.get_height(), '.2f'), 
                   (p.get_x() + p.get_width() / 2., p.get_height()),
@@ -200,7 +200,7 @@ def plot_x_per_matchday(attr,measure):
         y_str = measure + " " + attr + " by a Team"
         
     ax.set(xlabel = "Matchday", ylabel = y_str)
-    if measure == "Mean" or attribute in ["pass_ratio","possession","tackle_ratio"]:
+    if measure == "Mean" or attribute in ["possession"]:
         for p in ax.patches:
             ax.annotate(format(p.get_height(), '.2f'), 
                   (p.get_x() + p.get_width() / 2., p.get_height()),
@@ -253,7 +253,7 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
         y_str = measure + " " + attr + "in a Game"
     ax.set(xlabel = "Team", ylabel = y_str)
     plt.xticks(rotation=66,horizontalalignment="right")
-    if measure == "Mean" or attribute in ["pass_ratio","possession","tackle_ratio"]:
+    if measure == "Mean" or attribute in ["possession"]:
         for p in ax.patches:
             ax.annotate(format(p.get_height(), '.2f'), 
                   (p.get_x() + p.get_width() / 2., p.get_height()),
@@ -368,7 +368,8 @@ row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, 
 with row0_1:
     st.title('Danish Football League')
 with row0_2:
-    st.image('danish_super_league.png')
+    st.text("")
+    st.subheader('Streamlit App by EVANGELICAL WIZZARDS')
 row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
 with row3_1:
     st.markdown("Hello from the other side")
@@ -478,21 +479,18 @@ if all_teams_selected == 'Include all available teams':
     row16_spacer1, row16_1, row16_2, row16_3, row16_4, row16_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row16_1:
         st.markdown("👟 Shots on Goal")
-        st.markdown("🔁 Passes")
         st.markdown("🤹‍♂️ Possession")
         st.markdown("🤕 Fouls")
         st.markdown("🚫 Offside")
         st.markdown("📐 Corners")
     with row16_2:
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['shots_on_goal']))
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎"+str(df_match_result.iloc[0]['total_passes']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎"+str(df_match_result.iloc[0]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['fouls']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['offside']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['corners']))
     with row16_4:
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['shots_on_goal']))
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎"+str(df_match_result.iloc[1]['total_passes']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎"+str(df_match_result.iloc[1]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['fouls']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['offside']))
@@ -522,7 +520,7 @@ with row6_1:
     st.subheader('Analysis per Season')
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row7_1:
-    st.markdown('Investigate developments and trends. Which season had teams score the most goals? Has the amount of passes per games changed?')    
+    st.markdown('Investigate developments and trends. Which season had teams score the most goals?')    
     plot_x_per_season_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_season')
     plot_x_per_season_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_season')
 with row7_2:
