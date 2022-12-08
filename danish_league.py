@@ -125,7 +125,7 @@ def group_measure_by_attribute(aspect,attribute,measure):
 def plot_x_per_season(attr,measure):
     rc = {'figure.figsize':(8,4.5),
           'axes.facecolor':'white',
-          'axes.edgecolor': '004570',
+          'axes.edgecolor': 'white',
           'axes.labelcolor': 'white',
           'figure.facecolor': 'white',
           'patch.edgecolor': 'white',
