@@ -3,7 +3,7 @@
 This repository conatains a Python Streamlit application for analyzing Superliga data, as well as Jupyter Notebooks for scraping and cleaning the data.
 
 ## Deployed App
-Click here to get to the deployed 👉🏼 [Superliga Dashboard](https:"".py)
+Click here to get to the deployed 👉🏼 [Superliga Dashboard](https://danish-football-league.streamlit.app)
 
 ## Repository Structure
 | Folder/Code | Content |
