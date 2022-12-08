@@ -367,9 +367,8 @@ def build_matchfacts_return_string(return_game_id_value_team,min_max,attribute,w
 row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, .1, 1.3, .1))
 with row0_1:
     st.title('Danish Football League')
-    st.image('danish_super_league.png', caption='Superliga Logo')
 with row0_2:
-    st.text("")
+    st.image('danish_super_league.png')
     st.subheader('Streamlit App by EVANGELICAL WIZZARDS')
 row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
 with row3_1:
