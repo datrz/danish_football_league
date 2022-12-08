@@ -364,9 +364,13 @@ def build_matchfacts_return_string(return_game_id_value_team,min_max,attribute,w
 ### INTRODUCTION ###
 ####################
 
+from PIL import Image
+logo = Image.open('danish_super_league.svg')
+
 row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, .1, 1.3, .1))
 with row0_1:
     st.title('Danish Football League')
+    st.image(logo, caption='Superliga Logo')
 with row0_2:
     st.text("")
     st.subheader('Streamlit App by EVANGELICAL WIZZARDS')
