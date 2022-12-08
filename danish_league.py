@@ -124,11 +124,11 @@ def group_measure_by_attribute(aspect,attribute,measure):
 
 def plot_x_per_season(attr,measure):
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#004570',
-          'axes.edgecolor': '#004570',
+          'axes.facecolor':'white',
+          'axes.edgecolor': 'white',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#004570',
-          'patch.edgecolor': '#004570',
+          'figure.facecolor': 'white',
+          'patch.edgecolor': 'white',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -143,7 +143,7 @@ def plot_x_per_season(attr,measure):
     attribute = label_attr_dict[attr]
     df_plot = pd.DataFrame()
     df_plot = group_measure_by_attribute("season",attribute,measure)
-    ax = sns.barplot(x="aspect", y=attribute, data=df_plot, color = "#b80606")
+    ax = sns.barplot(x="aspect", y=attribute, data=df_plot, color = "#004570")
     y_str = measure + " " + attr + " " + " per Team"
     if measure == "Absolute":
         y_str = measure + " " + attr
@@ -171,11 +171,11 @@ def plot_x_per_season(attr,measure):
 
 def plot_x_per_matchday(attr,measure):
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#004570',
-          'axes.edgecolor': '#004570',
+          'axes.facecolor':'white',
+          'axes.edgecolor': 'white',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#004570',
-          'patch.edgecolor': '#004570',
+          'figure.facecolor': 'white',
+          'patch.edgecolor': 'white',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -190,7 +190,7 @@ def plot_x_per_matchday(attr,measure):
     attribute = label_attr_dict[attr]
     df_plot = pd.DataFrame()
     df_plot = group_measure_by_attribute("matchday",attribute,measure)
-    ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#b80606")
+    ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#004570")
     plt.gca().xaxis.set_major_formatter(FuncFormatter(lambda x, _: int(x)+1))
     y_str = measure + " " + attr + " per Team"
     if measure == "Absolute":
@@ -221,11 +221,11 @@ def plot_x_per_matchday(attr,measure):
 
 def plot_x_per_team(attr,measure): #total #against, #conceived
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#004570',
-          'axes.edgecolor': '#004570',
+          'axes.facecolor': 'white',
+          'axes.edgecolor': 'white',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#004570',
-          'patch.edgecolor': '#004570',
+          'figure.facecolor': 'white',
+          'patch.edgecolor': 'white',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -244,7 +244,7 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
     if specific_team_colors:
         ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), palette = color_dict)
     else:
-        ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#b80606")
+        ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#004570")
     y_str = measure + " " + attr + " " + "per Game"
     if measure == "Absolute":
         y_str = measure + " " + attr
@@ -275,11 +275,11 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
 def plt_attribute_correlation(aspect1, aspect2):
     df_plot = df_data_filtered
     rc = {'figure.figsize':(5,5),
-          'axes.facecolor':'#004570',
-          'axes.edgecolor': '#004570',
+          'axes.facecolor':'white',
+          'axes.edgecolor': 'white',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#004570',
-          'patch.edgecolor': '#004570',
+          'figure.facecolor': 'white',
+          'patch.edgecolor': 'white',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -293,9 +293,9 @@ def plt_attribute_correlation(aspect1, aspect2):
     asp1 = label_attr_dict_correlation[aspect1]
     asp2 = label_attr_dict_correlation[aspect2]
     if(corr_type=="Regression Plot (Recommended)"):
-        ax = sns.regplot(x=asp1, y=asp2, x_jitter=.1, data=df_plot, color = '#f21111',scatter_kws={"color": "#f21111"},line_kws={"color": "#c2dbfc"})
+        ax = sns.regplot(x=asp1, y=asp2, x_jitter=.1, data=df_plot, color = '#004570',scatter_kws={"color": "#004570"},line_kws={"color": "#c2dbfc"})
     if(corr_type=="Standard Scatter Plot"):
-        ax = sns.scatterplot(x=asp1, y=asp2, data=df_plot, color = '#f21111')
+        ax = sns.scatterplot(x=asp1, y=asp2, data=df_plot, color = '#004570')
     #if(corr_type=="Violin Plot (High Computation)"):
     #    ax = sns.violinplot(x=asp1, y=asp2, data=df_plot, color = '#f21111')
     ax.set(xlabel = aspect1, ylabel = aspect2)
