@@ -124,11 +124,11 @@ def group_measure_by_attribute(aspect,attribute,measure):
 
 def plot_x_per_season(attr,measure):
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#0e1117',
-          'axes.edgecolor': '#0e1117',
+          'axes.facecolor':'#004570',
+          'axes.edgecolor': '#004570',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
-          'patch.edgecolor': '#0e1117',
+          'figure.facecolor': '#004570',
+          'patch.edgecolor': '#004570',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -171,11 +171,11 @@ def plot_x_per_season(attr,measure):
 
 def plot_x_per_matchday(attr,measure):
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#0e1117',
-          'axes.edgecolor': '#0e1117',
+          'axes.facecolor':'#004570',
+          'axes.edgecolor': '#004570',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
-          'patch.edgecolor': '#0e1117',
+          'figure.facecolor': '#004570',
+          'patch.edgecolor': '#004570',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -221,11 +221,11 @@ def plot_x_per_matchday(attr,measure):
 
 def plot_x_per_team(attr,measure): #total #against, #conceived
     rc = {'figure.figsize':(8,4.5),
-          'axes.facecolor':'#0e1117',
-          'axes.edgecolor': '#0e1117',
+          'axes.facecolor':'#004570',
+          'axes.edgecolor': '#004570',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
-          'patch.edgecolor': '#0e1117',
+          'figure.facecolor': '#004570',
+          'patch.edgecolor': '#004570',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
@@ -275,11 +275,11 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
 def plt_attribute_correlation(aspect1, aspect2):
     df_plot = df_data_filtered
     rc = {'figure.figsize':(5,5),
-          'axes.facecolor':'#0e1117',
-          'axes.edgecolor': '#0e1117',
+          'axes.facecolor':'#004570',
+          'axes.edgecolor': '#004570',
           'axes.labelcolor': 'white',
-          'figure.facecolor': '#0e1117',
-          'patch.edgecolor': '#0e1117',
+          'figure.facecolor': '#004570',
+          'patch.edgecolor': '#004570',
           'text.color': 'white',
           'xtick.color': 'white',
           'ytick.color': 'white',
