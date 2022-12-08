@@ -3,4 +3,5 @@ streamlit
 numpy
 pandas
 seaborn
-PIL
+pil
+image
