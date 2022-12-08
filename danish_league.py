@@ -368,8 +368,7 @@ row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, 
 with row0_1:
     st.title('Danish Football League')
 with row0_2:
-    st.text("")
-    st.subheader('Streamlit App by EVANGELICAL WIZZARDS')
+    st.image('danish_super_league.png')
 row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
 with row3_1:
     st.markdown("Hello from the other side")
