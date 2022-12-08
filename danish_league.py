@@ -384,7 +384,7 @@ st.sidebar.text('')
 ### SEASON RANGE ###
 st.sidebar.markdown("**First select the data range you want to analyze:** 👇")
 unique_seasons = get_unique_seasons_modified(df_database)
-start_season, end_season = st.sidebar.select_slider('Select the season range you want to include', unique_seasons, value = ["‏‏‎ ‎‏‏‎ ‎13/14","19/20‏‏‎ ‎‏‏‎ ‎"])
+start_season, end_season = st.sidebar.select_slider('Select the season range you want to include', unique_seasons, value = ["‏‏‎ ‎‏‏‎ ‎13/14","22/23‏‏‎ ‎‏‏‎ ‎"])
 df_data_filtered_season = filter_season(df_stacked)        
 
 ### MATCHDAY RANGE ###
