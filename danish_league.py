@@ -8,7 +8,13 @@ from  matplotlib.ticker import FuncFormatter
 import seaborn as sns
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    primaryColor="#0093ef",
+    backgroundColor="#0093ef",
+    secondaryBackgroundColor="#0093ef",
+    textColor="#fafafa",
+    font="arial"   
+)
 
 ### Data Import ###
 df_database = pd.read_csv("./data/data_BuLi_13_20_cleaned.csv")
