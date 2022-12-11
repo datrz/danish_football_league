@@ -497,6 +497,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['yellow']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['corners']))
+    row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
 
 
 
@@ -561,24 +562,6 @@ with row11_1:
     y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
 with row11_2:
-    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
-        plt_attribute_correlation(x_axis_aspect1, y_axis_aspect2)
-    else:
-        st.warning('Please select at least one team')
-        
-### MAP ###
-corr_plot_types_1 = ["Map"]
-
-row12_spacer1, row12_1, row12_spacer2 = st.columns((.2, 7.1, .2))
-with row12_1:
-    st.subheader('Map of stadiums')
-row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
-with row13_1:
-    st.markdown('Hello this is map')    
-    corr_type_1 = st.selectbox ("What type?", corr_plot_types_1)
-    y_axis_aspect22 = st.selectbox ("Which attribute y-axis?", list(label_attr_dict_correlation.keys()))
-    x_axis_aspect11 = st.selectbox ("Which attribute x-axis?", list(label_attr_dict_correlation.keys()))
-with row13_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plt_attribute_correlation(x_axis_aspect1, y_axis_aspect2)
     else:
