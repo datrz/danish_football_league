@@ -497,7 +497,11 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['yellow']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['corners']))
+    
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
+    with row18_1:
+        st.markdown("Placeholder for a map")        
+    
 
 
 
