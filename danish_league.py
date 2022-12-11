@@ -466,7 +466,7 @@ if all_teams_selected == 'Include all available teams':
     with row15_3:
         end_result = str(df_match_result.iloc[0]['goals']) + " : " +str(df_match_result.iloc[1]['goals'])
         ht_result = " ‎ ‎( " + str(df_match_result.iloc[0]['ht_goals']) + " : " +str(df_match_result.iloc[1]['ht_goals']) + " )"
-        st.subheader(end_result + " " + ht_result)  
+        st.subheader(end_result)  
     with row15_4:
         st.subheader(str(df_match_result.iloc[1]['team']))
 else:
