@@ -15,10 +15,10 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data3.csv")
 types = ["Mean","Absolute","Median","Maximum","Minimum"]
-label_attr_dict = {"Goals":"goals","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners", "Points":"points"}
-label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received","Shots on opposing Goal":"shots_on_goal","Shots on own Goal":"shots_on_goal_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners", "Points":"points"}
-label_attr_dict_correlation = {"Goals":"delta_goals", "Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners", "Points":"delta_points"}
-label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners',"points":'points'}
+label_attr_dict = {"Goals":"goals","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners", "Points received":"points"}
+label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received","Shots on opposing Goal":"shots_on_goal","Shots on own Goal":"shots_on_goal_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners", "Points received":"points"}
+label_attr_dict_correlation = {"Goals":"delta_goals", "Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners", "Points received":"delta_points"}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners',"points received":'points'}
 
 ### Helper Methods ###
 def get_unique_seasons_modified(df_data):
@@ -90,7 +90,7 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
