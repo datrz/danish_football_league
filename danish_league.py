@@ -18,7 +18,7 @@ types = ["Mean","Absolute","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners"}
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
-label_fact_dict = {"goals scored":'goals',"points received":'points',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
 
 ### Helper Methods ###
 def get_unique_seasons_modified(df_data):
