@@ -338,11 +338,11 @@ def build_matchfacts_return_string(return_game_id_value_team,min_max,attribute,w
     string1 =  "On matchday " + matchday + " of season " + season + " " + home_team + " played against " + away_team + ". "
     string2 = ""
     if(goals_home>goals_away):
-        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " (" + str(df_match_result.iloc[0]['ht_goals']) + ":" + str(df_match_result.iloc[1]['ht_goals']) +") win for " + home_team + "."
+        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " win for " + home_team + "."
     if(goals_home<goals_away):
-        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " (" + str(df_match_result.iloc[0]['ht_goals']) + ":" + str(df_match_result.iloc[1]['ht_goals']) +") loss for " + home_team + "."
+        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " loss for " + home_team + "."
     if(goals_home==goals_away):
-        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " (" + str(df_match_result.iloc[0]['ht_goals']) + ":" + str(df_match_result.iloc[1]['ht_goals']) +") draw. "
+        string2 = "The match resulted in a " + goals_home + ":" + goals_away + " draw. "
     string3 = ""
     string4 = ""
     value = str(abs(round(return_game_id_value_team[1],2)))
