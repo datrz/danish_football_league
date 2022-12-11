@@ -576,8 +576,8 @@ row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3  = st.columns((.2,
 with row13_1:
     st.markdown('Investigate the correlation of attributes, but keep in mind correlation does not imply causation. Do teams that run more than their opponents also score more goals? Do teams that have more shots than their opponents have more corners?')    
     corr_type_1 = st.selectbox ("What type?", corr_plot_types_1)
-    y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
-    x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
+    y_axis_aspect22 = st.selectbox ("Which attribute y-axis?", list(label_attr_dict_correlation.keys()))
+    x_axis_aspect11 = st.selectbox ("Which attribute x-axis?", list(label_attr_dict_correlation.keys()))
 with row13_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plt_attribute_correlation(x_axis_aspect1, y_axis_aspect2)
