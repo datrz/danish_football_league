@@ -90,7 +90,7 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red',"points":"delta_points",'corners','delta_corners']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red',"points","delta_points",'corners','delta_corners']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
