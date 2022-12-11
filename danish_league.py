@@ -67,7 +67,7 @@ def filter_teams(df_data):
 
 def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
-    delta_names = ['goals','ht_goals','shots_on_goal','possession','fouls','yellow','red','corners']
+    delta_names = ['goals','ht_goals','shots_on_goal','possession','fouls','yellow','red','points','corners']
     for column in delta_names:
         h_delta_column = 'h_delta_'+ column
         a_delta_column = 'a_delta_'+ column
