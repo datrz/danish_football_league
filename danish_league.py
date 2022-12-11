@@ -93,26 +93,6 @@ def stack_home_away_dataframe(df_data):
     df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners']]
     return df_total_sorted
 
-def data_for_map(df_data):
-    df_data["game_id"] = df_data.index + 1
-
-    h_column_names = ['game_id','season','matchday','h_team']
-    a_column_names = ['game_id','season','matchday','a_team']
-
-    column_names_new = ['game_id','season','matchday','location','team']
- 
-    df_home = df_data.filter(h_column_names)
-    df_away = df_data.filter(a_column_names)
-    
-    df_home.insert(3,'location','h')
-    df_away.insert(3,'location','a')
-    df_home.columns = column_names_new
-    df_away.columns = column_names_new
-    
-    df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted_map = df_total[['game_id','season','matchday','location','team']]
-    return df_total_sorted_map
-
 def group_measure_by_attribute(aspect,attribute,measure):
     df_data = df_data_filtered
     df_return = pd.DataFrame()
@@ -517,11 +497,6 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['yellow']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['corners']))
-    
-    row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
-    with row18_1:
-        st.markdown("Placeholder for a map")        
-    
 
 
 
