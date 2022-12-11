@@ -567,14 +567,14 @@ with row11_2:
         st.warning('Please select at least one team')
         
 ### MAP ###
-corr_plot_types_1 = ["Regression Plot (Recommended)","Standard Scatter Plot"] #removed "Violin Plot (High Computation)"
+corr_plot_types_1 = ["Map"]
 
 row12_spacer1, row12_1, row12_spacer2 = st.columns((.2, 7.1, .2))
 with row12_1:
-    st.subheader('Correlation of Game Stats')
+    st.subheader('Map of stadiums')
 row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row13_1:
-    st.markdown('Investigate the correlation of attributes, but keep in mind correlation does not imply causation. Do teams that run more than their opponents also score more goals? Do teams that have more shots than their opponents have more corners?')    
+    st.markdown('Hello this is map')    
     corr_type_1 = st.selectbox ("What type?", corr_plot_types_1)
     y_axis_aspect22 = st.selectbox ("Which attribute y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect11 = st.selectbox ("Which attribute x-axis?", list(label_attr_dict_correlation.keys()))
