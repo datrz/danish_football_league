@@ -15,10 +15,10 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data3.csv")
 types = ["Mean","Absolute","Median","Maximum","Minimum"]
-label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on_goal", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners"}
+label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners"}
-label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on_goal","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
-label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on_goal',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
+label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
 
 ### Helper Methods ###
 def get_unique_seasons_modified(df_data):
@@ -67,7 +67,7 @@ def filter_teams(df_data):
 
 def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
-    delta_names = ['goals','ht_goals','shots_on_goal','possession','fouls','yellow','red','corners','points']
+    delta_names = ['goals','ht_goals','shots_on','possession','fouls','yellow','red','corners','points']
     for column in delta_names:
         h_delta_column = 'h_delta_'+ column
         a_delta_column = 'a_delta_'+ column
@@ -76,10 +76,10 @@ def stack_home_away_dataframe(df_data):
         df_data[h_delta_column] = df_data[h_column]-df_data[a_column]
         df_data[a_delta_column] = df_data[a_column]-df_data[h_column]
     #st.dataframe(data=df_data)
-    column_names = ['possession','yellow','red','corners','points','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points']
-    h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on_goal','a_shots_on_goal','h_fouls','a_fouls']
-    a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on_goal','h_shots_on_goal','a_fouls','h_fouls']
-    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on_goal','shots_on_goal_received','fouls','got_fouled','possession','yellow','red','corners', 'points','delta_goals','delta_ht_goals','delta_shots_on_goal','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points']
+    column_names = ['possession','yellow','red','corners','points','delta_goals','delta_ht_goals','delta_shots_on','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points']
+    h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on','a_shots_on','h_fouls','a_fouls']
+    a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on','h_shots_on','a_fouls','h_fouls']
+    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_received','fouls','got_fouled','possession','yellow','red','corners', 'points','delta_goals','delta_ht_goals','delta_shots_on','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points']
     for column in column_names: 
         h_column_names.append("h_" + column)
         a_column_names.append("a_" + column)
@@ -90,7 +90,7 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on_goal','shots_on_goal_received','delta_shots_on_goal','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_received','delta_shots_on','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
@@ -420,7 +420,7 @@ with row2_3:
     str_goals = "🥅 " + str(total_goals_in_df) + " Goals"
     st.markdown(str_goals)
 with row2_4:
-    total_shots_in_df = df_data_filtered['shots_on_goal'].sum()
+    total_shots_in_df = df_data_filtered['shots_on'].sum()
     str_shots = "👟⚽ " + str(total_shots_in_df) + " Shots"
     st.markdown(str_shots)
 
@@ -486,7 +486,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown("🟥 Red cards received")
         st.markdown("📐 Corners")
     with row16_2:
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['shots_on_goal']))
+        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['shots_on']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['points']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎"+str(df_match_result.iloc[0]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['fouls']))
@@ -494,7 +494,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['corners']))
     with row16_4:
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['shots_on_goal']))
+        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['shots_on']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['points']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎"+str(df_match_result.iloc[1]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['fouls']))    
