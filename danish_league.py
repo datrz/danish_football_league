@@ -17,8 +17,8 @@ df_database = pd.read_csv("./data/data3.csv")
 types = ["Mean","Absolute","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on","Shots off Goal":"shots_off", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners"}
-label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on","Shots off Goal":"shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
-label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on',"sots off gal":"shots_off","possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
+label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on","Shots off Goal":"delta_shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on',"shots off goal":"shots_off","possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners'}
 
 ### Helper Methods ###
 def get_unique_seasons_modified(df_data):
@@ -486,7 +486,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown("🟥 Red cards received")
         st.markdown("📐 Corners")
     with row16_2:
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['shots_on_goal']))
+        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['shots_on']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['points']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎‎"+str(df_match_result.iloc[0]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['fouls']))
@@ -494,7 +494,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['corners']))
     with row16_4:
-        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['shots_on_goal']))
+        st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['shots_on']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['points']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎"+str(df_match_result.iloc[1]['possession']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['fouls']))    
