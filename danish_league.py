@@ -371,7 +371,7 @@ with row0_2:
     st.image('danish_super_league.png')
 row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
 with row3_1:
-    st.markdown("Hello from the other side")
+    st.markdown("This is a data visualisation for Denmarks Superliga. It shows numerous parameters for matches that have occured in football matches between 2013 til 2021")
     
 #################
 ### SELECTION ###
@@ -429,7 +429,8 @@ with row3_1:
     st.markdown("")
     see_data = st.expander('You can click here to see the raw data first 👉')
     with see_data:
-        st.dataframe(data=df_data_filtered.reset_index(drop=True))
+         st.dataframe(data=df_database.reset_index(drop=True))
+        #st.dataframe(data=df_data_filtered.reset_index(drop=True))
 st.text('')
 
 #st.dataframe(data=df_stacked.reset_index(drop=True))
