@@ -366,13 +366,13 @@ def build_matchfacts_return_string(return_game_id_value_team,min_max,attribute,w
 
 row0_spacer1, row0_1, row0_spacer2, row0_2, row0_spacer3 = st.columns((.1, 2.3, .1, 1.3, .1))
 with row0_1:
-    st.title('Danish Football League')
+    st.title('Superliga Streamlit App')
 with row0_2:
     st.image('danish_super_league.png')
 row3_spacer1, row3_1, row3_spacer2 = st.columns((.1, 3.2, .1))
 with row3_1:
-    st.markdown("Welcome to the Danish Superliga Streamlit App!")
-    st.markdown("It is visualizing numerous parameters for football matches occured in between 2013-2021.")
+    st.markdown("Welcome to the danish Superliga Streamlit App!")
+    st.markdown("It is visualizing numerous parameters for football matches occured between 2013-2021.")
 
 #################
 ### SELECTION ###
