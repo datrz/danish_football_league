@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 
 ### Data Import ###
 df_database = pd.read_csv("./data/data3.csv")
-types = ["Mean","Absolute","Median","Maximum","Minimum"]
+types = ["Mean","Total","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners"}
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners"}
@@ -96,7 +96,7 @@ def stack_home_away_dataframe(df_data):
 def group_measure_by_attribute(aspect,attribute,measure):
     df_data = df_data_filtered
     df_return = pd.DataFrame()
-    if(measure == "Absolute"):
+    if(measure == "Total"):
         if(attribute == "possession"):
             measure = "Mean"
         else:
@@ -146,7 +146,7 @@ def plot_x_per_season(attr,measure):
     df_plot = group_measure_by_attribute("season",attribute,measure)
     ax = sns.barplot(x="aspect", y=attribute, data=df_plot, color = "#004570")
     y_str = measure + " " + attr + " " + " per Team"
-    if measure == "Absolute":
+    if measure == "Total":
         y_str = measure + " " + attr
     if measure == "Minimum" or measure == "Maximum":
         y_str = measure + " " + attr + " by a Team"
@@ -194,7 +194,7 @@ def plot_x_per_matchday(attr,measure):
     ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#004570")
     plt.gca().xaxis.set_major_formatter(FuncFormatter(lambda x, _: int(x)+1))
     y_str = measure + " " + attr + " per Team"
-    if measure == "Absolute":
+    if measure == "Total":
         y_str = measure + " " + attr
     if measure == "Minimum" or measure == "Maximum":
         y_str = measure + " " + attr + " by a Team"
@@ -247,7 +247,7 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
     else:
         ax = sns.barplot(x="aspect", y=attribute, data=df_plot.reset_index(), color = "#004570")
     y_str = measure + " " + attr + " " + "per Game"
-    if measure == "Absolute":
+    if measure == "Total":
         y_str = measure + " " + attr
     if measure == "Minimum" or measure == "Maximum":
         y_str = measure + " " + attr + "in a Game"
