@@ -576,3 +576,9 @@ for variable in dir():
         del globals()[variable]
 del variable
     
+
+    
+    
+fig, ax = plt.subplots()
+sns.heatmap(df_col.corr(), ax=ax)
+st.write(fig)    
