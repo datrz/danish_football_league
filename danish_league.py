@@ -15,7 +15,7 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data6.csv")
 types = ["Mean","Total","Median","Maximum","Minimum"]
-label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow cards received":"yellow", "Red cards received":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
+label_attr_dict = {"Goals":"goals", "Points received":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on Goal":"delta_shots_on","Possession":"delta_possession","Fouls":"delta_fouls","Yellow cards received":"delta_yellow","Red cards received":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on the goal":'shots_on',"possession ratio":'possession',"fouls":'fouls',"yellow cards received":'yellow',"red cards received":'red',"corners":'corners', "pre match expected goals":"pre_xg", "post match expected goals":"xg", "winning odds":"odds"}
@@ -488,8 +488,8 @@ if all_teams_selected == 'Include all available teams':
         st.markdown("🏆 Points")
         st.markdown("⛹🏻 Possession")
         st.markdown("🤕 Fouls")
-        st.markdown("🟨 Yellow cards received")
-        st.markdown("🟥 Red cards received")
+        st.markdown("🟨 Yellow Cards")
+        st.markdown("🟥 Red Cards")
         st.markdown("📐 Corners")
     with row16_2:
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[0]['odds']))
