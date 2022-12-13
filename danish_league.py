@@ -480,8 +480,8 @@ if all_teams_selected == 'Include all available teams':
     row16_spacer1, row16_1, row16_2, row16_3, row16_4, row16_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row16_1:
         st.markdown("👟 Shots on Goal")
-        st.markdown("Pre Expected Goals")
-        st.markdown("Expected Goals")            
+        st.markdown("📔 Pre Expected Goals")
+        st.markdown("📖 Expected Goals")            
         st.markdown("🏆 Points")
         st.markdown("⛹🏻 Possession")
         st.markdown("🤕 Fouls")
