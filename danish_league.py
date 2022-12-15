@@ -81,7 +81,7 @@ def stack_home_away_dataframe(df_data):
     column_names = ['possession','yellow','red','corners','points','pre_xg','xg','odds','delta_goals','delta_ht_goals','delta_shots_on','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
     h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on','a_shots_on','h_fouls','a_fouls']
     a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on','h_shots_on','a_fouls','h_fouls']
-    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
+    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_received','fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
     for column in column_names: 
         h_column_names.append("h_" + column)
         a_column_names.append("a_" + column)
