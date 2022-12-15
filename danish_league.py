@@ -13,7 +13,7 @@ import seaborn as sns
 st.set_page_config(layout="wide")
 
 ### Data Import ###
-df_database = pd.read_csv("./data/data2.csv")
+df_database = pd.read_csv("./data/data7.csv")
 types = ["Mean","Total","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals","Shots on Goal":"shots_on", "Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red cards received":"red", "Yellow cards received":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
