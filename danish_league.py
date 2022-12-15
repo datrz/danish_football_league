@@ -15,10 +15,10 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data7.csv")
 types = ["Mean","Total","Median","Maximum","Minimum"]
-label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals","Shots on target":"shots_on", "Shots off target":"shots_off","Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
-label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red Cards":"red", "Yellow Cards":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
-label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on target":"delta_shots_on","Shots off target":"delta_shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow Cards":"delta_yellow","Red Cards":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
-label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on target":'shots_on','shots off target':'shots_off',"possession ratio":'possession',"fouls":'fouls',"yellow Cards":'yellow',"Red Cards":'red',"corners":'corners', "pre match expected goals":"pre_xg", "post match expected goals":"xg", "winning odds":"odds"}
+label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals","Shots on target":"shots_on", "Shots off target":"shots_off","Total shots","total_shots","Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
+label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red Cards":"red", "Yellow Cards":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds","Total shots","total_shots"}
+label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on target":"delta_shots_on","Shots off target":"delta_shots_off","Total shots","delta_total_shots","Possession":"delta_possession","Fouls":"delta_fouls","Yellow Cards":"delta_yellow","Red Cards":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
+label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"shots on target":'shots_on','shots off target':'shots_off',"total shots","total_shots","possession ratio":'possession',"fouls":'fouls',"yellow Cards":'yellow',"Red Cards":'red',"corners":'corners', "pre match expected goals":"pre_xg", "post match expected goals":"xg", "winning odds":"odds"}
 color_dict = {'AGF': '#fc4744', 'AaB':'#8c0303', 'Brøndby':'#edd134', 'Esbjerg':'#fa2323', 'FC Helsingør':'#cf0c0c', 'Hobro':'#e62222', 'Horsens':'#1f9900', 'København':'#fff830', 'Lyngby':'#dbca12', 'Midtjylland':'#d10606', 'Nordsjælland':'#007512', 'OB':'#b50300', 'Randers':'#1c2afc', 'Silkeborg':'#eb3838', 'Sønderjyske':'#061fc2', 'Vejle':'#127a18', 'Vendsyssel':'#005ac2', 'Vestsjælland':'#0707a8', 'Viborg':'#d1332e'}
 
 
@@ -69,7 +69,7 @@ def filter_teams(df_data):
 
 def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
-    delta_names = ['goals','ht_goals','shots_on','shots_off','possession','fouls','yellow','red','corners','points','pre_xg','xg','odds']
+    delta_names = ['goals','ht_goals','shots_on','shots_off',"total_shots",'possession','fouls','yellow','red','corners','points','pre_xg','xg','odds']
     for column in delta_names:
         h_delta_column = 'h_delta_'+ column
         a_delta_column = 'a_delta_'+ column
@@ -78,10 +78,10 @@ def stack_home_away_dataframe(df_data):
         df_data[h_delta_column] = df_data[h_column]-df_data[a_column]
         df_data[a_delta_column] = df_data[a_column]-df_data[h_column]
     #st.dataframe(data=df_data)
-    column_names = ['possession','yellow','red','corners','points','pre_xg','xg','odds','delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
+    column_names = ['possession','yellow','red','corners','points','pre_xg','xg','odds',"total_shots",'delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off',"delta_total_shots",'delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
     h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on','a_shots_on','h_shots_off','a_shots_off','h_fouls','a_fouls']
     a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on','h_shots_on','a_shots_off','h_shots_off','a_fouls','h_fouls']
-    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_test','shots_off','shots_off_test','fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
+    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_test','shots_off','shots_off_test',"total_shots","delta_total_shots",'fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
     for column in column_names: 
         h_column_names.append("h_" + column)
         a_column_names.append("a_" + column)
@@ -92,7 +92,7 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_test','delta_shots_on','shots_off','shots_off_test','delta_shots_off','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points','pre_xg','delta_pre_xg','xg','delta_xg','odds','delta_odds']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_test','delta_shots_on','shots_off','shots_off_test','delta_shots_off',"total_shots","delta_total_shots",'possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points','pre_xg','delta_pre_xg','xg','delta_xg','odds','delta_odds']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
