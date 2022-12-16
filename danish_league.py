@@ -523,6 +523,7 @@ if all_teams_selected == 'Include all available teams':
         
       geo_sub = geo[geo.index == return_game_id_value_team[0]]
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(geo_sub))
+      st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(geo_sub.gps[0]))
 
 
       longitude, latitude = geo_sub.gps[0]
