@@ -524,16 +524,12 @@ if all_teams_selected == 'Include all available teams':
       geo_sub = geo[geo.index == return_game_id_value_team[0]]
       longitude = float(geo_sub.lon)
       latitude = float(geo_sub.lat)
-      stadium_name = list(geo_sub.stadium_name)[0]
-    
-      st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(longitude)+str(latitude))
-      
+      stadium_name = list(geo_sub.stadium_name)[0]      
       coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
       
-      st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(coordinates))
+      st.subheader(f'Map: {stadium_name}')
 
-      st.write(f'Map: {stadium_name}')
-      st.map(coordinates)
+      st.map(coordinates, zoom=12)
 
 
 
