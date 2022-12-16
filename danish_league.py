@@ -527,8 +527,8 @@ if all_teams_selected == 'Include all available teams':
       stadium_name = list(geo_sub.stadium_name)[0]
     
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(longitude)+str(latitude))
-
-      coordinates = pd.DataFrame([[longitude], [latitude]])
+      
+      coordinates = pd.DataFrame({'lat': latitude, 'lon': longitude})
       st.write(f'Map: {stadium_name}')
       st.map(coordinates)
 
