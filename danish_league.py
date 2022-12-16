@@ -529,7 +529,7 @@ if all_teams_selected == 'Include all available teams':
       stadium_name = list(geo_sub.stadium_name)[0]
 
       st.write(f'Map: {stadium_name}')
-      st.map(type_util.convert_anything_to_df(longitude), type_util.convert_anything_to_df(latitude))
+      st.map(type_util.convert_anything_to_df(longitude)[0], type_util.convert_anything_to_df(latitude)[0])
 
 
 
