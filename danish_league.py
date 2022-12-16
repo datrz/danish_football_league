@@ -522,8 +522,8 @@ if all_teams_selected == 'Include all available teams':
     with row18_1:
         
       geo_sub = geo[geo.index == return_game_id_value_team[0]]
-      longitude = geo_sub.lon
-      latitude = geo_sub.lat
+      longitude = float(geo_sub.lon)
+      latitude = float(geo_sub.lat)
       stadium_name = list(geo_sub.stadium_name)[0]
     
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(longitude)+str(latitude))
