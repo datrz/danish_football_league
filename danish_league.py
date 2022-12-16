@@ -528,7 +528,7 @@ if all_teams_selected == 'Include all available teams':
     
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(longitude)+str(latitude))
       
-      coordinates = pd.DataFrame(np.column_stack([latitude, longitude]), columns=['lat', 'lon'])
+      coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
       
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(coordinates))
 
