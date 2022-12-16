@@ -526,7 +526,7 @@ if all_teams_selected == 'Include all available teams':
 
       longitude = list(geo_sub.gps)[0][0]
       latitude = list(geo_sub.gps)[0][1]
-      stadium_name = geo_sub.stadium_name[0]
+      stadium_name = list(geo_sub.stadium_name)[0]
 
       st.write(f'Map: {stadium_name}')
       st.map(longitude, latitude)
