@@ -520,7 +520,7 @@ if all_teams_selected == 'Include all available teams':
 
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
-      geo_sub = geo[geo.index == return_game_id_value_team]
+      geo_sub = geo[geo.index == return_game_id_value_team[0]]
 
       longitude, latitude = geo_sub.gps[0]
       stadium_name = geo_sub.stadium_name[0]
@@ -601,7 +601,3 @@ for variable in dir():
     if variable[0:2] != "__":
         del globals()[variable]
 del variable
-    
-
-  
-  
