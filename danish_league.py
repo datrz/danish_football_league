@@ -527,7 +527,7 @@ if all_teams_selected == 'Include all available teams':
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(geo_sub.gps[0]))
 
 
-      longitude = = geo_sub.gps[0]
+      longitude = geo_sub.gps[0]
       latitude = geo_sub.gps[1]
       stadium_name = geo_sub.stadium_name[0]
 
