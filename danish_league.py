@@ -15,6 +15,7 @@ st.set_page_config(layout="wide")
 ### Data Import ###
 df_database = pd.read_csv("./data/data7.csv")
 geo = pd.read_csv("./data/geo.csv")
+geo['gps] = geo['gps].apply(tuple)
 types = ["Mean","Total","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals","Shots on target":"shots_on", "Shots off target":"shots_off","Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red Cards":"red", "Yellow Cards":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
@@ -526,7 +527,8 @@ if all_teams_selected == 'Include all available teams':
       st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(geo_sub.gps[0]))
 
 
-      longitude, latitude = geo_sub.gps[0]
+      longitude = = geo_sub.gps[0]
+      latitude = geo_sub.gps[1]
       stadium_name = geo_sub.stadium_name[0]
 
       st.write(f'Map: {stadium_name}')
