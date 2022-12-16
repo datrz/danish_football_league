@@ -520,19 +520,14 @@ if all_teams_selected == 'Include all available teams':
 
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
-        
-      geo_sub = geo[geo.index == return_game_id_value_team[0]]
-      longitude = float(geo_sub.lon)
-      latitude = float(geo_sub.lat)
-      stadium_name = list(geo_sub.stadium_name)[0]      
-      coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
-      
-      st.subheader(f'Match was played at {stadium_name}')
+        geo_sub = geo[geo.index == return_game_id_value_team[0]]
+        longitude = float(geo_sub.lon)
+        latitude = float(geo_sub.lat)
+        stadium_name = list(geo_sub.stadium_name)[0]      
+        coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
-      st.map(coordinates, zoom=12)
-
-
-
+        st.subheader(f'Match was played at {stadium_name}')
+        st.map(coordinates, zoom=12)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
