@@ -387,12 +387,19 @@ st.sidebar.text('')
 st.sidebar.markdown("**First select the data range you want to analyze:** 👇")
 unique_seasons = get_unique_seasons_modified(df_database)
 start_season, end_season = st.sidebar.select_slider('Select the season range you want to include', unique_seasons, value = ["‏‏‎ ‎‏‏‎ ‎13/14","22/23‏‏‎ ‎‏‏‎ ‎"])
-df_data_filtered_season = filter_season(df_stacked)        
+df_data_filtered_season = filter_season(df_stacked)
+
+### REGION RANGE ###
+st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
+unique_regions = np.unique(df_database.reg).tolist()
+start_region, end_region = st.sidebar.multiselect('Select the region range you want to include', unique_regions, value = unique_regions)
+df_data_filtered_region = filter_region(df_data_filtered_season)  
 
 ### MATCHDAY RANGE ###
-unique_matchdays = get_unique_matchdays(df_data_filtered_season) #min and max matchday
+unique_matchdays = get_unique_matchdays(df_data_filtered_region) #min and max matchday
 selected_matchdays = st.sidebar.select_slider('Select the matchday range you want to include', unique_matchdays, value=[min(unique_matchdays),max(unique_matchdays)])
-df_data_filtered_matchday = filter_matchday(df_data_filtered_season)        
+df_data_filtered_matchday = filter_matchday(df_data_filtered_season)
+
 
 ### TEAM SELECTION ###
 unique_teams = get_unique_teams(df_data_filtered_matchday)
