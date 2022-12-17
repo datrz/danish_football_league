@@ -563,22 +563,23 @@ with row5_1:
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
-    if specific_team_colors:
-        region_color = {
-            'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
-            'Region Sjaelland': np.array([0, 174, 214],dtype=int),
-            'Region Syddanmark': np.array([254, 127, 45],dtype=int),
-            'Region Midtjylland': np.array([255, 206, 0],dtype=int),
-            'Region Nordjylland': np.array([216, 0, 39],dtype=int)
-        }
+    with st.beta_columns(2):
+        if specific_team_colors:
+            region_color = {
+                'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
+                'Region Sjaelland': np.array([0, 174, 214],dtype=int),
+                'Region Syddanmark': np.array([254, 127, 45],dtype=int),
+                'Region Midtjylland': np.array([255, 206, 0],dtype=int),
+                'Region Nordjylland': np.array([216, 0, 39],dtype=int)
+            }
 
-        image = np.ndarray((20, 20, 3), dtype=int)
-        image[:, :] = [205, 92, 92]
-        
-        for region in region_color:
-            st.markdown(f'**{region}**: ')
-            image[:, :] = region_color[region]
-            st.image(image)
+            image = np.ndarray((20, 20, 3), dtype=int)
+            image[:, :] = [205, 92, 92]
+
+            for region in region_color:
+                st.markdown(f'**{region}**: ')
+                image[:, :] = region_color[region]
+                st.image(image)
 
 
 with row5_2:
