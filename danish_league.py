@@ -521,7 +521,7 @@ if all_teams_selected == 'Include all available teams':
 
     row19_spacer1  = st.columns((7))
 
-    row18_spacer1, row18_1, row18_2, row18_spacer2  = st.columns((0.5, 4, 2, 0.5))
+    row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
 
 #    with row16_5:
@@ -555,14 +555,7 @@ if all_teams_selected == 'Include all available teams':
             st.map(coordinates, zoom=8)
         elif zoom_level == "Country View":
             st.map(coordinates, zoom=6)
-      
-    with row18_2:
-        from PIL import Image
-        image = Image.open('https://odensestadion.dk/wp-content/uploads/2019/11/1265x500px_bund_1-4.jpg')
-
-        st.image(image, caption='Odense Stadium', channels="BRG", output_format="JPEG")
-
-       
+        
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
 with row4_1:
