@@ -574,8 +574,9 @@ with row5_1:
     }
 
     for region in region_color:
-        st.markdown(f'**{region}**: {region_color[region]}')
-    
+        st.markdown(f'**{region}**: {st.image(region_color[region])}')
+
+
 with row5_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plot_x_per_team(plot_x_per_team_selected, plot_x_per_team_type)
