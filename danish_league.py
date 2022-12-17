@@ -531,7 +531,7 @@ if all_teams_selected == 'Include all available teams':
         if str(geo_sub.attendance) == "NaN":
             attendance = "unknown number of"
         else:
-            attendance = format(int(geo_sub.attendance), ",")
+            attendance = format(geo_sub.attendance, ",")
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
