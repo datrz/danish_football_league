@@ -528,7 +528,6 @@ if all_teams_selected == 'Include all available teams':
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
         st.subheader(f'Match was played at {stadium_name} and {format(attendance, ",")} fans watched the game on the stadium')
-        st.map(coordinates, zoom=12)
         
         zoom_level = st.selectbox(
             "Zoom Level",
