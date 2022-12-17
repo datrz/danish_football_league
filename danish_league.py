@@ -470,7 +470,7 @@ row12_spacer1, row12_1, row12_spacer2 = st.columns((.2, 7.1, .2))
 with row12_1:
     st.subheader('Match Finder')
     st.markdown('Show the (or a) match with the...')  
-if all_teams_selected == 'Include all available teams':
+if (all_teams_selected == 'Include all available teams') and (all_regions_selected == 'Include all regions'):
     row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3, row13_3, row13_spacer4   = st.columns((.2, 2.3, .2, 2.3, .2, 2.3, .2))
     with row13_1:
         show_me_hi_lo = st.selectbox ("", ["Maximum","Minimum"],key = 'hi_lo') 
@@ -496,7 +496,7 @@ if all_teams_selected == 'Include all available teams':
 else:
     row17_spacer1, row17_1, row17_spacer2 = st.columns((.2, 7.1, .2))
     with row17_1:
-        st.warning('Unfortunately this analysis is only available if all teams are included')
+        st.warning('Unfortunately this analysis is only available if all teams and regions are included')
 
 if all_teams_selected == 'Include all available teams':
     row16_spacer1, row16_1, row16_2, row16_3, row16_4, row16_5, row16_spacer2  = st.columns((0.5, 1.5, 1, 1.5, 1, 1, 0.5))
