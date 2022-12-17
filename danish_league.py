@@ -566,11 +566,13 @@ with row5_1:
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
     region_color = ['a','b','c']
-    color_array = [[(205, 92, 92) for x in range(20)] for y in range(20)]
+    image = np.ndarray((20, 20, 3), dtype=int)
+
+    image[:, :] = [205, 92, 92]
 
     for region in region_color:
         st.markdown(f'**{region}**: ')
-        st.image(color_array)
+        st.image(image)
     
 with row5_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
