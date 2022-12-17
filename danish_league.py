@@ -566,11 +566,11 @@ with row5_1:
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
     region_color = {
-        'Region Hovedstaden': np.array([00, 75, B2]),
-        'Region Sjælland': np.array([00, AE, D6]),
-        'Region Syddanmark': np.array([FE, 7F, 2D]),
-        'Region Midtjylland': np.array([FF, CE, 00]),
-        'Region Nordjylland': np.array([D8, 00, 27])
+        'Region Hovedstaden': np.array([0, 117, 178]),
+        'Region Sjælland': np.array([0, 174, 214]),
+        'Region Syddanmark': np.array([254, 127, 45]),
+        'Region Midtjylland': np.array([255, 206, 0]),
+        'Region Nordjylland': np.array([216, 0, 39])
     }
 
     for region in region_color:
