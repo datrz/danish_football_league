@@ -522,8 +522,6 @@ if all_teams_selected == 'Include all available teams':
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
 
-#    with row16_5:
-
         geo_sub = df_database[df_database.index == (return_game_id_value_team[0]-1)]
 
         attendance = list(geo_sub.attendance)
@@ -564,10 +562,11 @@ with row5_1:
     plot_x_per_team_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict_teams.keys()), key = 'attribute_team')
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
+
     if specific_team_colors:
         region_color = {
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
-            'Region Sjælland': np.array([0, 174, 214],dtype=int),
+            'Region Sjaelland': np.array([0, 174, 214],dtype=int),
             'Region Syddanmark': np.array([254, 127, 45],dtype=int),
             'Region Midtjylland': np.array([255, 206, 0],dtype=int),
             'Region Nordjylland': np.array([216, 0, 39],dtype=int)
@@ -575,11 +574,18 @@ with row5_1:
 
         image = np.ndarray((20, 20, 3), dtype=int)
         image[:, :] = [205, 92, 92]
-
+        
+    row55_1, row55_2  = st.columns((2, .3))
+    with row55_1:
         for region in region_color:
             st.markdown(f'**{region}**: ')
-            image[:, :] = region_color[region]
-            st.image(image)
+#            image[:, :] = region_color[region]
+#            st.image(image)
+    with row55_2:
+    for region in region_color:
+ #       st.markdown(f'**{region}**: ')
+        image[:, :] = region_color[region]
+        st.image(image)
 
 
 with row5_2:
