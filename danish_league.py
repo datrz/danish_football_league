@@ -526,11 +526,10 @@ if all_teams_selected == 'Include all available teams':
 
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
         
-        geo_sub.attendance = geo_sub.attendance.fillna('unknown number of', inplace=True)
         st.subheader(geo_sub.attendance)
 
-        if str(geo_sub.attendance) == "unknown number of":
-            attendance = attendance
+        if str(geo_sub.attendance) == None:
+            attendance = 'unknown number of'
         else:
             attendance = format(int(geo_sub.attendance), ",")
         longitude = float(geo_sub.lon)
