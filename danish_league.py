@@ -529,7 +529,7 @@ if all_teams_selected == 'Include all available teams':
         attendance = int(geo_sub['attendance'])
         st.subheader(f'{attendance}')
 
-        if attendance == 0:
+        if attendance == 1:
             attendance1 = 'unknown number of'
         else:
             attendance1 = int(geo_sub.attendance)
