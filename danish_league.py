@@ -523,6 +523,8 @@ if all_teams_selected == 'Include all available teams':
 
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
+        st.subheader(f'{geo_sub.attendance}')
+
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
         if geo_sub.attendance == "N/A":
             geo_sub.attendance = "unknown number of"
@@ -532,7 +534,6 @@ if all_teams_selected == 'Include all available teams':
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
-        st.subheader(f'{geo_sub.attendance}')
 
         st.subheader(f'Match was played at {stadium_name} and {attendance} fans watched the game on the stadium')
         
