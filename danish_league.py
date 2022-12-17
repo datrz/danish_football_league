@@ -66,13 +66,6 @@ def filter_teams(df_data):
         return df_filtered_team
     return df_data
 
-def filter_region(df_data):
-    df_filtered_region = pd.DataFrame()
-    if all_regions_selected == 'Select regions manually (choose below)':
-        df_filtered_region = df_data[df_data['reg'].isin(selected_regions)]
-        return df_filtered_region
-    return df_data
-
 def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
     delta_names = ['goals','ht_goals','shots_on','shots_off','possession','fouls','yellow','red','corners','points','pre_xg','xg','odds']
@@ -85,9 +78,9 @@ def stack_home_away_dataframe(df_data):
         df_data[a_delta_column] = df_data[a_column]-df_data[h_column]
     #st.dataframe(data=df_data)
     column_names = ['possession','yellow','red','corners','points','pre_xg','xg','odds','delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
-    h_column_names = ['game_id','season','matchday','reg','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on','a_shots_on','h_shots_off','a_shots_off','h_fouls','a_fouls']
-    a_column_names = ['game_id','season','matchday','reg','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on','h_shots_on','a_shots_off','h_shots_off','a_fouls','h_fouls']
-    column_names_new = ['game_id','season','matchday','reg','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_test','shots_off','shots_off_test','fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
+    h_column_names = ['game_id','season','matchday','h_team','h_goals','a_goals','h_ht_goals','a_ht_goals','h_shots_on','a_shots_on','h_shots_off','a_shots_off','h_fouls','a_fouls']
+    a_column_names = ['game_id','season','matchday','a_team','a_goals','h_goals','a_ht_goals','h_ht_goals','a_shots_on','h_shots_on','a_shots_off','h_shots_off','a_fouls','h_fouls']
+    column_names_new = ['game_id','season','matchday','location','team','goals','goals_received','ht_goals','ht_goals_received','shots_on','shots_on_test','shots_off','shots_off_test','fouls','got_fouled','possession','yellow','red','corners', 'points', 'pre_xg','xg', 'odds', 'delta_goals','delta_ht_goals','delta_shots_on','delta_shots_off','delta_possession','delta_fouls','delta_yellow','delta_red','delta_corners','delta_points','delta_pre_xg','delta_xg','delta_odds']
     for column in column_names: 
         h_column_names.append("h_" + column)
         a_column_names.append("a_" + column)
@@ -98,7 +91,7 @@ def stack_home_away_dataframe(df_data):
     df_home.columns = column_names_new
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
-    df_total_sorted = df_total[['game_id','season','matchday','reg','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_test','delta_shots_on','shots_off','shots_off_test','delta_shots_off','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points','pre_xg','delta_pre_xg','xg','delta_xg','odds','delta_odds']]
+    df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_test','delta_shots_on','shots_off','shots_off_test','delta_shots_off','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points','pre_xg','delta_pre_xg','xg','delta_xg','odds','delta_odds']]
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
@@ -394,32 +387,19 @@ st.sidebar.text('')
 st.sidebar.markdown("**First select the data range you want to analyze:** 👇")
 unique_seasons = get_unique_seasons_modified(df_database)
 start_season, end_season = st.sidebar.select_slider('Select the season range you want to include', unique_seasons, value = ["‏‏‎ ‎‏‏‎ ‎13/14","22/23‏‏‎ ‎‏‏‎ ‎"])
-df_data_filtered_season = filter_season(df_stacked)
-
+df_data_filtered_season = filter_season(df_stacked)        
 
 ### MATCHDAY RANGE ###
 unique_matchdays = get_unique_matchdays(df_data_filtered_season) #min and max matchday
 selected_matchdays = st.sidebar.select_slider('Select the matchday range you want to include', unique_matchdays, value=[min(unique_matchdays),max(unique_matchdays)])
-df_data_filtered_matchday = filter_matchday(df_data_filtered_season)
-
+df_data_filtered_matchday = filter_matchday(df_data_filtered_season)        
 
 ### TEAM SELECTION ###
 unique_teams = get_unique_teams(df_data_filtered_matchday)
 all_teams_selected = st.sidebar.selectbox('Do you want to only include specific teams? If the answer is yes, please check the box below and then select the team(s) in the new field.', ['Include all available teams','Select teams manually (choose below)'])
 if all_teams_selected == 'Select teams manually (choose below)':
     selected_teams = st.sidebar.multiselect("Select and deselect the teams you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_teams, default = unique_teams)
-df_data_filtered_team = filter_teams(df_data_filtered_matchday)  
-
-### REGION RANGE ###
-unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
-
-all_regions_selected = st.sidebar.selectbox('Do you want to only include specific regions? If the answer is yes, please check the box below and then select the region(s) in the new field.', ['Include all regions','Select regions manually (choose below)'])
-if all_regions_selected == 'Select regions manually (choose below)':
-    selected_regions = st.sidebar.multiselect("Select and deselect regions you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_regions, default = unique_regions)
-
-df_data_filtered = filter_region(df_data_filtered_team)  
-
-
+df_data_filtered = filter_teams(df_data_filtered_matchday)        
 ### SEE DATA ###
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
@@ -469,7 +449,7 @@ row12_spacer1, row12_1, row12_spacer2 = st.columns((.2, 7.1, .2))
 with row12_1:
     st.subheader('Match Finder')
     st.markdown('Show the (or a) match with the...')  
-if (all_teams_selected == 'Include all available teams') and (all_regions_selected == 'Include all regions'):
+if all_teams_selected == 'Include all available teams':
     row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3, row13_3, row13_spacer4   = st.columns((.2, 2.3, .2, 2.3, .2, 2.3, .2))
     with row13_1:
         show_me_hi_lo = st.selectbox ("", ["Maximum","Minimum"],key = 'hi_lo') 
@@ -495,9 +475,9 @@ if (all_teams_selected == 'Include all available teams') and (all_regions_select
 else:
     row17_spacer1, row17_1, row17_spacer2 = st.columns((.2, 7.1, .2))
     with row17_1:
-        st.warning('Unfortunately this analysis is only available if all teams and regions are included')
+        st.warning('Unfortunately this analysis is only available if all teams are included')
 
-if (all_teams_selected == 'Include all available teams') and (all_regions_selected == 'Include all regions'):
+if all_teams_selected == 'Include all available teams':
     row16_spacer1, row16_1, row16_2, row16_3, row16_4, row16_5, row16_spacer2  = st.columns((0.5, 1.5, 1, 1.5, 1, 1, 0.5))
     with row16_1:
         st.markdown("🧮 Winning odds")
@@ -584,10 +564,10 @@ with row5_1:
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 with row5_2:
-    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and selected_regions:
+    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plot_x_per_team(plot_x_per_team_selected, plot_x_per_team_type)
     else:
-        st.warning('Please select at least one team and region')
+        st.warning('Please select at least one team')
 
 ### SEASON ###
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
@@ -599,10 +579,10 @@ with row7_1:
     plot_x_per_season_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_season')
     plot_x_per_season_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_season')
 with row7_2:
-    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and selected_regions:
+    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plot_x_per_season(plot_x_per_season_selected,plot_x_per_season_type)
     else:
-        st.warning('Please select at least one team and region')
+        st.warning('Please select at least one team')
 
 ### MATCHDAY ###
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
@@ -614,10 +594,10 @@ with row9_1:
     plot_x_per_matchday_selected = st.selectbox ("Which aspect do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_matchday')
     plot_x_per_matchday_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_matchday')
 with row9_2:
-    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and selected_regions:
+    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
     else:
-        st.warning('Please select at least one team and region')
+        st.warning('Please select at least one team')
 
 
 
@@ -634,10 +614,10 @@ with row11_1:
     y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
 with row11_2:
-    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and selected_regions:
+    if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plt_attribute_correlation(x_axis_aspect1, y_axis_aspect2)
     else:
-        st.warning('Please select at least one team and region')
+        st.warning('Please select at least one team')
 
 for variable in dir():
     if variable[0:2] != "__":
