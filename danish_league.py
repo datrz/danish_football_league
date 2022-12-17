@@ -535,11 +535,11 @@ if all_teams_selected == 'Include all available teams':
             ["Low", "Medium", "High"]
         )
         if zoom_level == "Low":
-            st.map(coordinates, zoom=8, labels=labels)
+            st.map(coordinates, zoom=8)
         elif zoom_level == "Medium":
-            st.map(coordinates, zoom=10, labels=labels)
+            st.map(coordinates, zoom=10)
         elif zoom_level == "High":
-            st.map(coordinates, zoom=14, labels=labels)
+            st.map(coordinates, zoom=14)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
