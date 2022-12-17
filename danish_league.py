@@ -531,7 +531,7 @@ if all_teams_selected == 'Include all available teams':
         if attendance[0] == 1:
             attendance1 = 'unknown number of'
         else:
-            attendance1 = "{:,}".format(intgeo_sub.attendance[0])
+            attendance1 = format(attendance[0], ",")
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
