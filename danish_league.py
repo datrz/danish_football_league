@@ -58,7 +58,7 @@ def filter_region(df_data):
     if all_regions_selected == 'Select regions manually (choose below)':
         df_filtered_region = df_data[df_data['reg'].isin(selected_regions)]
         return df_filtered_region
-    return df_filtered_region
+    return df_data
 
 def filter_matchday(df_data):
     df_filtered_matchday = pd.DataFrame()
@@ -396,17 +396,6 @@ unique_seasons = get_unique_seasons_modified(df_database)
 start_season, end_season = st.sidebar.select_slider('Select the season range you want to include', unique_seasons, value = ["‏‏‎ ‎‏‏‎ ‎13/14","22/23‏‏‎ ‎‏‏‎ ‎"])
 df_data_filtered_season = filter_season(df_stacked)
 
-### REGION RANGE ###
-st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
-unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
-
-all_regions_selected = st.sidebar.selectbox('Do you want to only include specific regions? If the answer is yes, please check the box below and then select the region(s) in the new field.', ['Include all regions','Select regions manually (choose below)'])
-if all_regions_selected == 'Select regions manually (choose below)':
-    selected_regions = st.sidebar.multiselect("Select and deselect regions you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_regions, default = unique_regions)
-
-
-#selected_regions = st.sidebar.multiselect('Select the region range you want to include', unique_regions, value = unique_regions)
-df_data_filtered_region = filter_region(df_data_filtered_season)  
 
 ### MATCHDAY RANGE ###
 unique_matchdays = get_unique_matchdays(df_data_filtered_region) #min and max matchday
@@ -419,7 +408,19 @@ unique_teams = get_unique_teams(df_data_filtered_matchday)
 all_teams_selected = st.sidebar.selectbox('Do you want to only include specific teams? If the answer is yes, please check the box below and then select the team(s) in the new field.', ['Include all available teams','Select teams manually (choose below)'])
 if all_teams_selected == 'Select teams manually (choose below)':
     selected_teams = st.sidebar.multiselect("Select and deselect the teams you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_teams, default = unique_teams)
-df_data_filtered = filter_teams(df_data_filtered_matchday)        
+df_data_filtered_team = filter_teams(df_data_filtered_matchday)  
+
+### REGION RANGE ###
+st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
+unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
+
+all_regions_selected = st.sidebar.selectbox('Do you want to only include specific regions? If the answer is yes, please check the box below and then select the region(s) in the new field.', ['Include all regions','Select regions manually (choose below)'])
+if all_regions_selected == 'Select regions manually (choose below)':
+    selected_regions = st.sidebar.multiselect("Select and deselect regions you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_regions, default = unique_regions)
+
+df_data_filtered = filter_region(df_data_filtered_team)  
+
+
 ### SEE DATA ###
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
