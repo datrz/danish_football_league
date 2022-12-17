@@ -556,7 +556,7 @@ if all_teams_selected == 'Include all available teams':
         elif zoom_level == "Country View":
             st.map(coordinates, zoom=6)
       
-     with row18_2:
+    with row18_2:
         from PIL import Image
         image = Image.open('https://odensestadion.dk/wp-content/uploads/2019/11/1265x500px_bund_1-4.jpg')
 
