@@ -574,7 +574,7 @@ with row5_1:
 }
 
     for region, color in region_color_dict.items():
-        st.sidebar.markdown(f'**{region}**: {color}')
+        st.markdown(f'**{region}**: {color}')
     
 with row5_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
