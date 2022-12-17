@@ -575,6 +575,7 @@ with row5_1:
 
     for region, color in region_color_dict.items():
         st.markdown(f'**{region}**: {color}')
+        st.rectangle(fill_color=color, width=20, height=20)
     
 with row5_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
