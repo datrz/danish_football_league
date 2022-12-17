@@ -575,17 +575,17 @@ with row5_1:
         image = np.ndarray((20, 20, 3), dtype=int)
         image[:, :] = [205, 92, 92]
         
-    row55_1, row55_2  = st.columns((2, .3))
-    with row55_1:
-        for region in region_color:
-            st.markdown(f'**{region}**: ')
-    #            image[:, :] = region_color[region]
-    #            st.image(image)
-    with row55_2:
-        for region in region_color:
-     #       st.markdown(f'**{region}**: ')
-            image[:, :] = region_color[region]
-            st.image(image)
+        row55_1, row55_2  = st.columns((2, .3))
+        with row55_1:
+            for region in region_color:
+                st.markdown(f'**{region}**: ')
+        #            image[:, :] = region_color[region]
+        #            st.image(image)
+        with row55_2:
+            for region in region_color:
+         #       st.markdown(f'**{region}**: ')
+                image[:, :] = region_color[region]
+                st.image(image)
 
 
 with row5_2:
