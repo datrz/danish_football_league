@@ -8,6 +8,7 @@ import time
 from matplotlib import pyplot as plt
 from  matplotlib.ticker import FuncFormatter
 import seaborn as sns
+import folium
 
 
 st.set_page_config(layout="wide")
@@ -536,13 +537,25 @@ if all_teams_selected == 'Include all available teams':
             ["Stadium View", "City View", "Region View", "Country View"], index=1
         )
         if zoom_level == "Stadium View":
-            st.map(coordinates, zoom=14, movable=False)
+            st.map(coordinates, zoom=14)
         elif zoom_level == "City View":
             st.map(coordinates, zoom=12)
         elif zoom_level == "Region View":
             st.map(coordinates, zoom=8)
         elif zoom_level == "Country View":
             st.map(coordinates, zoom=6)
+        
+        if st.checkbox("Show Geo Map"):
+        zoom_level = st.selectbox(
+            "Zoom Level",
+            ["Low", "Medium", "High"]
+        )
+        if zoom_level == "Low":
+            folium.Map(location=coordinates, zoom_start=8, tiles="OpenStreetMap").add_child(folium.Marker(location=coordinates, popup=labels, icon=folium.Icon(color="red"))).add_to(m)
+        elif zoom_level == "Medium":
+            folium.Map(location=coordinates, zoom_start=10, tiles="OpenStreetMap").add_child(folium.Marker(location=coordinates, popup=labels, icon=folium.Icon(color="red"))).add_to(m)
+        elif zoom_level == "High":
+            folium.Map(location=coordinates, zoom_start=14, tiles="OpenStreetMap").add_child(folium.Marker(location=coordinates, popup=labels, icon=folium.Icon(color="red"))).add_to(m)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
