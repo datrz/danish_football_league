@@ -524,7 +524,10 @@ if all_teams_selected == 'Include all available teams':
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
-        attendance = format(int(geo_sub.attendance), ",")
+        if geo_sub.attendance == "N/A":
+            geo_sub.attendance = "unknown number of"
+        else:
+            geo_sub.attendance = format(int(geo_sub.attendance), ",")
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
