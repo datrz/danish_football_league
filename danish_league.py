@@ -73,7 +73,7 @@ def filter_region(df_data):
         return df_filtered_region
     return df_data
 
-stack_home_away_dataframe(df_data):
+def stack_home_away_dataframe(df_data):
     df_data["game_id"] = df_data.index + 1
     delta_names = ['goals','ht_goals','shots_on','shots_off','possession','fouls','yellow','red','corners','points','pre_xg','xg','odds']
     for column in delta_names:
