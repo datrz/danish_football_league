@@ -524,13 +524,13 @@ if all_teams_selected == 'Include all available teams':
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
-        attendance = str(geo_sub.attendance)
+        attendance = format(int(geo_sub.attendance), ",")
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
-        st.subheader(f'Match was played at {stadium_name} and {["unknown number of" if attendance == "N/A" else format(attendance, ",")]} fans watched the game on the stadium')
+        st.subheader(f'Match was played at {stadium_name} and {attendance} fans watched the game on the stadium')
         
         zoom_level = st.selectbox(
             "Zoom Level",
