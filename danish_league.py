@@ -411,7 +411,6 @@ if all_teams_selected == 'Select teams manually (choose below)':
 df_data_filtered_team = filter_teams(df_data_filtered_matchday)  
 
 ### REGION RANGE ###
-st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
 unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
 
 all_regions_selected = st.sidebar.selectbox('Do you want to only include specific regions? If the answer is yes, please check the box below and then select the region(s) in the new field.', ['Include all regions','Select regions manually (choose below)'])
