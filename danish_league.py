@@ -525,8 +525,8 @@ if all_teams_selected == 'Include all available teams':
     with row18_1:
 
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
-        geo_sub = geo_sub.index=False
-        attendance = geo_sub.attendance
+
+        attendance = geo_sub.attendance.index=False
         st.subheader(attendance)
 
         if attendance == 1:
