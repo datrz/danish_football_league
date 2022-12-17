@@ -585,7 +585,7 @@ with row5_1:
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 with row5_2:
-    if (all_teams_selected != 'Select teams manually (choose below)') and (all_regions_selected == selected_regions):
+    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and (all_regions_selected != 'Select regions manually (choose below)' or selected_regions):
         plot_x_per_team(plot_x_per_team_selected, plot_x_per_team_type)
     else:
         st.warning('Please select at least one team and region')
@@ -600,7 +600,7 @@ with row7_1:
     plot_x_per_season_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_season')
     plot_x_per_season_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_season')
 with row7_2:
-    if (all_teams_selected != 'Select teams manually (choose below)') and (all_regions_selected == selected_regions):
+    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and (all_regions_selected != 'Select regions manually (choose below)' or selected_regions):
         plot_x_per_season(plot_x_per_season_selected,plot_x_per_season_type)
     else:
         st.warning('Please select at least one team and region')
@@ -615,7 +615,7 @@ with row9_1:
     plot_x_per_matchday_selected = st.selectbox ("Which aspect do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_matchday')
     plot_x_per_matchday_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_matchday')
 with row9_2:
-    if (all_teams_selected != 'Select teams manually (choose below)') and (all_regions_selected == selected_regions):
+    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and (all_regions_selected != 'Select regions manually (choose below)' or selected_regions):
         plot_x_per_matchday(plot_x_per_matchday_selected, plot_x_per_matchday_type)
     else:
         st.warning('Please select at least one team and region')
@@ -635,7 +635,7 @@ with row11_1:
     y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
 with row11_2:
-    if (all_teams_selected != 'Select teams manually (choose below)') and (all_regions_selected == selected_regions):
+    if (all_teams_selected != 'Select teams manually (choose below)' or selected_teams) and (all_regions_selected != 'Select regions manually (choose below)' or selected_regions):
         plt_attribute_correlation(x_axis_aspect1, y_axis_aspect2)
     else:
         st.warning('Please select at least one team and region')
