@@ -536,7 +536,7 @@ if all_teams_selected == 'Include all available teams':
             ["Stadium View", "City View", "Region View", "Country View"], index=1
         )
         if zoom_level == "Stadium View":
-            st.map(coordinates, zoom=14)
+            st.map(coordinates, zoom=14, movable=False)
         elif zoom_level == "City View":
             st.map(coordinates, zoom=12)
         elif zoom_level == "Region View":
