@@ -528,7 +528,6 @@ if all_teams_selected == 'Include all available teams':
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
         st.subheader(f'Match was played at **{stadium_name}** and **{attendance}** fans watched the game on the stadium')
-        st.markdown("Match was played at **"+stadium_name+"** and **"+attendance+"** fans watched the game on the stadium", font_size=20)
         st.map(coordinates, zoom=12)
 
 ### TEAM ###
