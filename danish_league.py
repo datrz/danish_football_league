@@ -560,7 +560,7 @@ if all_teams_selected == 'Include all available teams':
         from PIL import Image
         image = Image.open('https://odensestadion.dk/wp-content/uploads/2019/11/1265x500px_bund_1-4.jpg')
 
-        st.image(image, caption='Odense Stadium')
+        st.image(image, caption='Odense Stadium', channels="BRG", output_format="JPEG")
 
        
 ### TEAM ###
