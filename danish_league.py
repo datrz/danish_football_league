@@ -272,6 +272,14 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
                    xytext = (0, 18),
                    rotation = 90,
                    textcoords = 'offset points')
+        # Add legend
+    legend_elements = [Patch(facecolor='#0088CC', edgecolor='#0088CC',label='Midtjylland'),
+                       Patch(facecolor='#00AED6', edgecolor='#00AED6',label='Sjaelland'),
+                       Patch(facecolor='#FE7F2D', edgecolor='#FE7F2D',label='Syddanmark'),
+                       Patch(facecolor='#0075B2', edgecolor='#0075B2',label='Hovedstaden'),
+                       Patch(facecolor='#D80027', edgecolor='#D80027',label='Nordjylland')]                      ]
+    ax.legend(handles=legend_elements)
+    
     st.pyplot(fig)
 
 def plt_attribute_correlation(aspect1, aspect2):
