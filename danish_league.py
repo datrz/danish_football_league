@@ -526,7 +526,7 @@ if all_teams_selected == 'Include all available teams':
 
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
         
-        st.subheader(str(geo_sub.attendance[0]))
+        st.subheader(str(geo_sub.attendance))
 
         if geo_sub.attendance == "N/A":
             geo_sub.attendance = "unknown number of"
