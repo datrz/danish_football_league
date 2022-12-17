@@ -565,17 +565,12 @@ with row5_1:
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
-    region_color_dict = {
-    'Jutland': 'Red',
-    'Funen': 'Green',
-    'Zealand': 'Blue',
-    'Lolland-Falster': 'Orange',
-    'Bornholm': 'Yellow'
-}
+    region_color = ['a','b','c']
+    color_array = [[(205, 92, 92) for x in range(20)] for y in range(20)]
 
-    for region, color in region_color_dict.items():
+    for region in region_color:
         st.markdown(f'**{region}**: ')
-        st.image((205, 92, 92), width=2, caption='color')
+        st.image(color_array)
     
 with row5_2:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
