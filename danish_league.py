@@ -527,6 +527,8 @@ if all_teams_selected == 'Include all available teams':
         geo_sub = df_database[df_database.index == (return_game_id_value_team[0]-1)]
 
         attendance = list(geo_sub.attendance)
+        city = str(geo_sub.city)
+        reg = str(geo_sub.reg)
 
         if attendance[0] == 1:
             attendance1 = 'unknown number of'
@@ -537,7 +539,7 @@ if all_teams_selected == 'Include all available teams':
         stadium_name = list(geo_sub.stadium_name)[0]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
-        st.markdown(f'🇩🇰 **Match {return_game_id_value_team[0]}** was played at **{stadium_name}** and **{attendance1} fans** watched the game on the stadium')
+        st.markdown(f'🇩🇰 **Match {return_game_id_value_team[0]}** was played at **{stadium_name}, {city}, {reg}** and **{attendance1} fans** watched the game on the stadium')
         
         zoom_level = st.selectbox(
             "Zoom Level",
