@@ -572,6 +572,9 @@ with row5_1:
         'Region Midtjylland': np.array([255, 206, 0],dtype=int),
         'Region Nordjylland': np.array([216, 0, 39],dtype=int)
     }
+    
+    image = np.ndarray((20, 20, 3), dtype=int)
+    image[:, :] = [205, 92, 92]
 
     for region in region_color:
         st.markdown(f'**{region}**: ')
