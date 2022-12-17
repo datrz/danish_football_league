@@ -528,8 +528,8 @@ if all_teams_selected == 'Include all available teams':
         
         st.subheader(geo_sub.attendance.astype('str'))
         geo_sub.attendance = geo_sub.attendance.fillna('unknown number of', inplace=True)
-        if str(geo_sub.attendance) == "nan":
-            attendance = "unknown number of"
+        if str(geo_sub.attendance) == "unknown number of":
+            attendance = attendance
         else:
             attendance = format(int(geo_sub.attendance), ",")
         longitude = float(geo_sub.lon)
