@@ -573,9 +573,9 @@ with row5_1:
         'Region Nordjylland': np.array([216, 0, 39])
     }
 
-    for region in region_color:
-        st.markdown(f'**{region}**:')
-        st.image(region_color[region])
+    for region, color in region_color_dict.items():
+        st.markdown(f'**{region}**: ')
+        st.image(color)
 
 
 with row5_2:
