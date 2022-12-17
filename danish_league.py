@@ -540,7 +540,7 @@ if all_teams_selected == 'Include all available teams':
         elif zoom_level == "Region View":
             st.map(coordinates, zoom=8)
         elif zoom_level == "Country View":
-            st.map(coordinates, zoom=7)
+            st.map(coordinates, zoom=6)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
