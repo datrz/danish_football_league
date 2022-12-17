@@ -579,13 +579,13 @@ with row5_1:
     with row55_1:
         for region in region_color:
             st.markdown(f'**{region}**: ')
-#            image[:, :] = region_color[region]
-#            st.image(image)
+    #            image[:, :] = region_color[region]
+    #            st.image(image)
     with row55_2:
-    for region in region_color:
- #       st.markdown(f'**{region}**: ')
-        image[:, :] = region_color[region]
-        st.image(image)
+        for region in region_color:
+     #       st.markdown(f'**{region}**: ')
+            image[:, :] = region_color[region]
+            st.image(image)
 
 
 with row5_2:
