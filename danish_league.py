@@ -277,7 +277,7 @@ def plot_x_per_team(attr,measure): #total #against, #conceived
                        Patch(facecolor='#00AED6', edgecolor='#00AED6',label='Sjaelland'),
                        Patch(facecolor='#FE7F2D', edgecolor='#FE7F2D',label='Syddanmark'),
                        Patch(facecolor='#0075B2', edgecolor='#0075B2',label='Hovedstaden'),
-                       Patch(facecolor='#D80027', edgecolor='#D80027',label='Nordjylland')]                      ]
+                       Patch(facecolor='#D80027', edgecolor='#D80027',label='Nordjylland')]
     ax.legend(handles=legend_elements)
     
     st.pyplot(fig)
