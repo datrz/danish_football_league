@@ -519,12 +519,12 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['red']))
         st.markdown(" ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"+str(df_match_result.iloc[1]['corners']))
 
-#    row19_spacer1  = st.columns((7))
+    row19_spacer1  = st.columns((7))
 
-#    row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
-#    with row18_1:
+    row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
+    with row18_1:
 
-    with row16_5:
+#    with row16_5:
 
         geo_sub = df_database[df_database.index == (return_game_id_value_team[0]-1)]
 
