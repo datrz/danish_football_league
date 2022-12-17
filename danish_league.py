@@ -532,6 +532,7 @@ if all_teams_selected == 'Include all available teams':
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
+        st.subheader(f'{geo_sub.attendance}')
 
         st.subheader(f'Match was played at {stadium_name} and {attendance} fans watched the game on the stadium')
         
