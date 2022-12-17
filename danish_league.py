@@ -58,7 +58,7 @@ def filter_region(df_data):
     if all_regions_selected == 'Select regions manually (choose below)':
         df_filtered_region = df_data[df_data['reg'].isin(selected_regions)]
         return df_filtered_region
-    return df_data
+    return df_filtered_region
 
 def filter_matchday(df_data):
     df_filtered_matchday = pd.DataFrame()
