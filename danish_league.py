@@ -529,9 +529,9 @@ if all_teams_selected == 'Include all available teams':
 #        st.subheader(str(geo_sub.attendance))
 
         if geo_sub.attendance == "NaN":
-            geo_sub.attendance = "unknown number of"
+            attendance = "unknown number of"
         else:
-            geo_sub.attendance = format(int(geo_sub.attendance), ",")
+            attendance = format(int(geo_sub.attendance), ",")
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
