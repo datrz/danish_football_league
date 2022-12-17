@@ -391,7 +391,7 @@ df_data_filtered_season = filter_season(df_stacked)
 
 ### REGION RANGE ###
 st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
-unique_regions = np.unique(df_database.reg).tolist()
+unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
 start_region, end_region = st.sidebar.multiselect('Select the region range you want to include', unique_regions, value = unique_regions)
 df_data_filtered_region = filter_region(df_data_filtered_season)  
 
