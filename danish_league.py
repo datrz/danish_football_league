@@ -53,6 +53,13 @@ def filter_season(df_data):
     df_filtered_season = df_data[df_data['season'].isin(seasons_selected)]
     return df_filtered_season
 
+def filter_region(df_data):
+    df_filtered_region = pd.DataFrame()
+    if all_regions_selected == 'Select regions manually (choose below)':
+        df_filtered_region = df_data[df_data['reg'].isin(selected_regions)]
+        return df_filtered_region
+    return df_data
+
 def filter_matchday(df_data):
     df_filtered_matchday = pd.DataFrame()
     matchdays_list = list(range(selected_matchdays[0], selected_matchdays[1]+1))
@@ -392,7 +399,13 @@ df_data_filtered_season = filter_season(df_stacked)
 ### REGION RANGE ###
 st.sidebar.markdown("**Now select the region range you want to analyze:** 👇")
 unique_regions = [str(r) for r in np.unique(df_database.reg).tolist()]
-start_region, end_region = st.sidebar.multiselect('Select the region range you want to include', unique_regions, value = unique_regions)
+
+all_regions_selected = st.sidebar.selectbox('Do you want to only include specific regions? If the answer is yes, please check the box below and then select the region(s) in the new field.', ['Include all regions','Select regions manually (choose below)'])
+if all_regions_selected == 'Select regions manually (choose below)':
+    selected_regions = st.sidebar.multiselect("Select and deselect regions you would like to include in the analysis. You can clear the current selection by clicking the corresponding x-button on the right", unique_regions, default = unique_regions)
+
+
+#selected_regions = st.sidebar.multiselect('Select the region range you want to include', unique_regions, value = unique_regions)
 df_data_filtered_region = filter_region(df_data_filtered_season)  
 
 ### MATCHDAY RANGE ###
