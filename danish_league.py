@@ -528,7 +528,7 @@ if all_teams_selected == 'Include all available teams':
         
 #        st.subheader(str(geo_sub.attendance))
 
-        if geo_sub.attendance == "NaN":
+        if str(geo_sub.attendance) == "NaN":
             attendance = "unknown number of"
         else:
             attendance = format(int(geo_sub.attendance), ",")
