@@ -531,12 +531,12 @@ if all_teams_selected == 'Include all available teams':
         
         zoom_level = st.selectbox(
             "Zoom Level",
-            ["Low", "Medium", "High"]
+            ["Low", "Medium", "High"], index=1
         )
         if zoom_level == "Low":
             st.map(coordinates, zoom=8)
         elif zoom_level == "Medium":
-            st.map(coordinates, zoom=10)
+            st.map(coordinates, zoom=12)
         elif zoom_level == "High":
             st.map(coordinates, zoom=14)
 
