@@ -528,7 +528,7 @@ if all_teams_selected == 'Include all available teams':
         geo_sub.attendance = geo_sub['attendance'].fillna(0, inplace=True)
         st.subheader(geo_sub.attendance)
 
-        if str(geo_sub.attendance) == None:
+        if str(geo_sub.attendance) == 0:
             attendance = 'unknown number of'
         else:
             attendance = format(int(geo_sub.attendance), ",")
