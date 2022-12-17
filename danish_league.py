@@ -525,13 +525,21 @@ if all_teams_selected == 'Include all available teams':
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
         stadium_name = list(geo_sub.stadium_name)[0]
-        labels = [stadium_name]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
         st.subheader(f'Match was played at {stadium_name} and {format(attendance, ",")} fans watched the game on the stadium')
         st.map(coordinates, zoom=12)
-        st.marker(coordinates, labels=labels)
-
+        
+        zoom_level = st.selectbox(
+            "Zoom Level",
+            ["Low", "Medium", "High"]
+        )
+        if zoom_level == "Low":
+            st.map(coordinates, zoom=8, labels=labels)
+        elif zoom_level == "Medium":
+            st.map(coordinates, zoom=10, labels=labels)
+        elif zoom_level == "High":
+            st.map(coordinates, zoom=14, labels=labels)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
