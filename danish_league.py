@@ -524,11 +524,12 @@ if all_teams_selected == 'Include all available teams':
         attendance = int(geo_sub.attendance)
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
-        stadium_name = list(geo_sub.stadium_name)[0]      
+        stadium_name = list(geo_sub.stadium_name)[0]
+        labels = [stadium_name]
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
         st.subheader(f'Match was played at {stadium_name} and {format(attendance, ",")} fans watched the game on the stadium')
-        st.map(coordinates, zoom=12)
+        st.map(coordinates, zoom=12, labels=labels)
 
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
