@@ -14,8 +14,8 @@ import folium
 st.set_page_config(layout="wide")
 
 ### Data Import ###
-df_database = pd.read_csv("./data/data7.csv")
-geo = pd.read_csv("./data/geo.csv")
+df_database = pd.read_csv("./data/data8.csv")
+#geo = pd.read_csv("./data/geo.csv")
 types = ["Mean","Total","Median","Maximum","Minimum"]
 label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals","Shots on target":"shots_on", "Shots off target":"shots_off","Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red", "Corners":"corners","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red Cards":"red", "Yellow Cards":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
@@ -523,7 +523,7 @@ if all_teams_selected == 'Include all available teams':
 
     row18_spacer1, row18_1, row18_spacer2  = st.columns((0.5, 6, 0.5))
     with row18_1:
-        geo_sub = geo[geo.index == return_game_id_value_team[0]]
+        df_sub = df_database[df_database.index == return_game_id_value_team[0]]
         attendance = int(geo_sub.attendance)
         longitude = float(geo_sub.lon)
         latitude = float(geo_sub.lat)
