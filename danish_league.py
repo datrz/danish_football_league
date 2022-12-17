@@ -534,7 +534,7 @@ if all_teams_selected == 'Include all available teams':
         
         zoom_level = st.selectbox(
             "Zoom Level",
-            ["Stadium View", "City View", "Region View", "Country View"], index=1
+            ["Stadium View", "City View", "Region View", "Country View"], index=0
         )
         if zoom_level == "Stadium View":
             st.map(coordinates, zoom=14)
