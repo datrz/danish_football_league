@@ -526,7 +526,7 @@ if all_teams_selected == 'Include all available teams':
 
         geo_sub = df_database[df_database.index == return_game_id_value_team[0]]
         geo_sub.attendance = geo_sub.fillna(0, inplace=True)
-        attendance = list(geo_sub[['attendance']]).fillna(0)
+        attendance = [geo_sub[['attendance']]),0]
         st.subheader(attendance)
 
         if attendance[0] == None:
