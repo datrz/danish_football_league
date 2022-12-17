@@ -527,8 +527,8 @@ if all_teams_selected == 'Include all available teams':
         geo_sub = df_database[df_database.index == (return_game_id_value_team[0]-1)]
 
         attendance = list(geo_sub.attendance)
-        city = str(geo_sub.city)
-        reg = str(geo_sub.reg)
+        city = list(geo_sub.city)
+        reg = list(geo_sub.reg)
 
         if attendance[0] == 1:
             attendance1 = 'unknown number of'
