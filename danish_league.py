@@ -31,7 +31,7 @@ city_dict = {
     'Haderslev': 'in Haderslev Arena',
     'Helsingor': 'in Helsingor Arena',
     'Herning': 'in Herning Arena',
-    'Hjorring': 'in Hjorring Arena'
+    'Hjorring': 'in Hjorring Arena',
     'Hobro': 'in Hobro Arena',
     'Horsens': 'in Horsens Arena',
     'Kobenhavn': 'in Kobenhavn Arena',
@@ -41,7 +41,7 @@ city_dict = {
     'Silkeborg': 'in Silkeborg Arena',
     'Slagelse': 'in Slagelse Arena',
     'Vejle': 'in Vejle Arena',
-    'Viborg': 'in Viborg Arena',
+    'Viborg': 'in Viborg Arena'
 }
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
