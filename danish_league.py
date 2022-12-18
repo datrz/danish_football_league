@@ -511,7 +511,7 @@ if all_teams_selected == 'Include all available teams':
         if show_me_city == 'on all Stadiums':
             return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
         else:
-            if return_game_id_value_team = len(find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))) == 0:
+            if len(find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))) == 0:
                 st.warning('Unfortunately this arena is unavailble for the given season. Displaying all stadiums')
                 return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
             else:
