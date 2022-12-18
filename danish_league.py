@@ -570,7 +570,7 @@ with row5_1:
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
             'Region Sjaelland': np.array([0, 174, 214],dtype=int),
             'Region Syddanmark': np.array([254, 127, 45],dtype=int),
-            'Region Midtjylland': np.array([255, 206, 0],dtype=int),
+            'Region Midtjylland': np.array([0, 169, 157],dtype=int),
             'Region Nordjylland': np.array([216, 0, 39],dtype=int)
         }
 
