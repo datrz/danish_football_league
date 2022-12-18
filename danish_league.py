@@ -349,6 +349,29 @@ def find_match_game_id(min_max,attribute,what,city):
     return_game_id_value_team = [game_id,value,team]
     return return_game_id_value_team
 
+def find_match_game_id_all(min_max,attribute,what):
+    df_find = df_data_filtered
+    search_attribute = label_fact_dict[attribute]
+    if(what == "difference between teams"):
+        search_attribute = "delta_" + label_fact_dict[attribute]
+        df_find[search_attribute] = df_find[search_attribute].abs()
+    if(what == "by both teams"):
+        df_find = df_data_filtered.groupby(['game_id'], as_index=False).sum()
+    column = df_find[search_attribute]
+    index = 0
+    if(min_max == "Minimum"):
+        index = column.idxmin()
+    if(min_max == "Maximum"):
+        index = column.idxmax()
+    #st.dataframe(data=df_find)
+    game_id = df_find.at[index, 'game_id']
+    value = df_find.at[index,search_attribute]
+    team = ""
+    if(what != "by both teams"):
+        team = df_find.at[index, 'team']
+    return_game_id_value_team = [game_id,value,team]
+    return return_game_id_value_team
+
 def build_matchfacts_return_string(return_game_id_value_team,min_max,attribute,what):
     game_id = return_game_id_value_team[0]
     df_match_result = df_data_filtered.loc[df_data_filtered['game_id'] == game_id]
@@ -482,10 +505,13 @@ if all_teams_selected == 'Include all available teams':
     with row13_3:
         show_me_what = st.selectbox ("", ["by a team", "by both teams", "difference between teams"],key = 'one_both_diff')
     with row13_4:
-        show_me_city = st.selectbox("", list(city_dict.values()), key = 'city')
+        show_me_city = st.selectbox("on all Stadiums", list(city_dict.values()), key = 'city')
     row14_spacer1, row14_1, row14_spacer2 = st.columns((.2, 7.1, .2))
     with row14_1:
-        return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("on Stadium in ",""))
+        if show_me_city == 'on all Stadiums'
+            return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
+        else:
+            return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("on Stadium in ",""))
         df_match_result = build_matchfacts_return_string(return_game_id_value_team,show_me_hi_lo,show_me_aspect,show_me_what)     
     row15_spacer1, row15_1, row15_2, row15_3, row15_4, row15_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row15_1:
