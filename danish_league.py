@@ -511,12 +511,11 @@ if all_teams_selected == 'Include all available teams':
         if show_me_city == 'on all Stadiums':
             return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
         else:
-            st.warning(len(find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))))
-            if len(find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))) == 0:
+            try:
+                return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))
+            except Exception as e: 
                 st.warning('Unfortunately this arena is unavailble for the given season. Displaying all stadiums')
                 return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
-            else:
-                return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))
         df_match_result = build_matchfacts_return_string(return_game_id_value_team,show_me_hi_lo,show_me_aspect,show_me_what)     
     row15_spacer1, row15_1, row15_2, row15_3, row15_4, row15_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row15_1:
