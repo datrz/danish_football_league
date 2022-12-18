@@ -307,8 +307,7 @@ def plt_attribute_correlation(aspect1, aspect2):
     st.pyplot(fig, ax)
 
 def find_match_game_id(min_max,attribute,what,stadium):
-    df_find = df_data_filtered
-    df_find = df_find[df_find['stadium_name'] == stadium_dict[stadium]]
+    df_find = df_data_filtered[df_data_filtered['stadium_name'] == stadium_dict[stadium]]
     search_attribute = label_fact_dict[attribute]
     if(what == "difference between teams"):
         search_attribute = "delta_" + label_fact_dict[attribute]
