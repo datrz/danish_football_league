@@ -23,25 +23,25 @@ label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_po
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"winning odds":"odds","pre match expected goals":"pre_xg", "post match expected goals":"xg", "shots on target":'shots_on','shots off target':'shots_off',"corners":'corners',"possession ratio":'possession',"fouls":'fouls',"yellow cards":'yellow',"red cards":'red'}
 color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#30276E', 'Viborg':'#00A99D'}
 city_dict = {
-    'Aalborg': 'in Aalborg Arena',
-    'Aarhus': 'in Aarhus Arena',
-    'Brondby Kommune': 'in Brondby Kommune Arena',
-    'Esbjerg': 'in Esbjerg Arena',
-    'Farum': 'in Farum Arena',
-    'Haderslev': 'in Haderslev Arena',
-    'Helsingor': 'in Helsingor Arena',
-    'Herning': 'in Herning Arena',
-    'Hjorring': 'in Hjorring Arena',
-    'Hobro': 'in Hobro Arena',
-    'Horsens': 'in Horsens Arena',
-    'Kobenhavn': 'in Kobenhavn Arena',
-    'Kongens Lyngby': 'in Kongens Lyngby Arena',
-    'Odense': 'in Odense Arena',
-    'Randers': 'in Randers Arena',
-    'Silkeborg': 'in Silkeborg Arena',
-    'Slagelse': 'in Slagelse Arena',
-    'Vejle': 'in Vejle Arena',
-    'Viborg': 'in Viborg Arena'
+    'Aalborg': 'in Aalborg Stadium',
+    'Aarhus': 'in Aarhus Stadium',
+    'Brondby Kommune': 'in Brondby Kommune Stadium',
+    'Esbjerg': 'in Esbjerg Stadium',
+    'Farum': 'in Farum Stadium',
+    'Haderslev': 'in Haderslev Stadium',
+    'Helsingor': 'in Helsingor Stadium',
+    'Herning': 'in Herning Stadium',
+    'Hjorring': 'in Hjorring Stadium',
+    'Hobro': 'in Hobro Stadium',
+    'Horsens': 'in Horsens Stadium',
+    'Kobenhavn': 'in Kobenhavn Stadium',
+    'Kongens Lyngby': 'in Kongens Lyngby Stadium',
+    'Odense': 'in Odense Stadium',
+    'Randers': 'in Randers Stadium',
+    'Silkeborg': 'in Silkeborg Stadium',
+    'Slagelse': 'in Slagelse Stadium',
+    'Vejle': 'in Vejle Stadium',
+    'Viborg': 'in Viborg Stadium'
 }
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
@@ -512,7 +512,7 @@ if all_teams_selected == 'Include all available teams':
             return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
         else:
             try:
-                return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Arena",""))
+                return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("in ","").replace(" Stadium",""))
             except Exception as e: 
                 st.warning('Unfortunately this arena is unavailble for the given season. Displaying all stadiums')
                 return_game_id_value_team = find_match_game_id_all(show_me_hi_lo,show_me_aspect,show_me_what)
@@ -597,7 +597,7 @@ if all_teams_selected == 'Include all available teams':
         st.markdown(f'🇩🇰 **Match** with index {return_game_id_value_team[0]} was played at **{stadium_name}, {city[0]}, {reg[0]}** and **{attendance1} fans** watched the game on the stadium')
         
         zoom_level = st.selectbox(
-            "Zoom Level. If you zoom in/out too much, change the parameters in the Match Finder to fix the Zoom on the map",
+            "Choose Zoom Level. If you zoom in/out too much, change the parameters in the Match Finder to fix the Zoom on the map",
             ["Stadium View", "City View", "Region View", "Country View"], index=0
         )
         if zoom_level == "Stadium View":
