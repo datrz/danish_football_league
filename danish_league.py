@@ -505,7 +505,7 @@ if all_teams_selected == 'Include all available teams':
     with row13_3:
         show_me_what = st.selectbox ("", ["by a team", "by both teams", "difference between teams"],key = 'one_both_diff')
     with row13_4:
-        stadiums = list(city_dict.values()).extend('on all Stadiums')
+        stadiums = list(city_dict.values()
         show_me_city = st.selectbox("", stadiums, key = 'city')
     row14_spacer1, row14_1, row14_spacer2 = st.columns((.2, 7.1, .2))
     with row14_1:
