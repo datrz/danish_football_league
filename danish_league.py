@@ -621,7 +621,6 @@ with row5_1:
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
 with row5_3:
-
     if specific_team_colors:
         region_color = {
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
@@ -640,9 +639,21 @@ with row5_3:
 #            st.image(image)
             
 with row5_2:
+    if specific_team_colors:
+        region_color = {
+            'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
+            'Region Sjaelland': np.array([48, 39, 110],dtype=int),
+            'Region Syddanmark': np.array([254, 127, 45],dtype=int),
+            'Region Midtjylland': np.array([0, 169, 157],dtype=int),
+            'Region Nordjylland': np.array([216, 0, 39],dtype=int)
+        }
+
+        image = np.ndarray((26, 26, 3), dtype=int)
+        image[:, :] = [205, 92, 92]
+
         for region in region_color:
             image[:, :] = region_color[region]
-#            st.markdown(f'**{region}**: ')
+#            st.markdown(region.replace('Region ',''))
             st.image(image)
 
 with row5_4:
