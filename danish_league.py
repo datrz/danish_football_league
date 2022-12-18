@@ -662,6 +662,8 @@ with row5_4:
     else:
         st.warning('Please select at least one team')
 
+row20_spacer1 = st.columns((7.5))
+
 ### SEASON ###
 row6_spacer1, row6_1, row6_spacer2 = st.columns((.2, 7.1, .2))
 with row6_1:
