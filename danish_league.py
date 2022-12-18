@@ -631,7 +631,7 @@ with row5_3:
             'Region Nordjylland': np.array([216, 0, 39],dtype=int)
         }
 
-        image = np.ndarray((20, 20, 3), dtype=int)
+        image = np.ndarray((30, 30, 3), dtype=int)
         image[:, :] = [205, 92, 92]
 
         for region in region_color:
