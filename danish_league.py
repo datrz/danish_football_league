@@ -22,7 +22,7 @@ label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on target":"delta_shots_on","Shots off target":"delta_shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow Cards":"delta_yellow","Red Cards":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"winning odds":"odds","pre match expected goals":"pre_xg", "post match expected goals":"xg", "shots on target":'shots_on','shots off target':'shots_off',"corners":'corners',"possession ratio":'possession',"fouls":'fouls',"yellow cards":'yellow',"red cards":'red'}
 color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#30276E', 'Viborg':'#00A99D'}
-stadium_dict = {'Ceres Park': 'Ceres Park'}
+city_dict = {'Aarhus': 'Aarhus'}
 
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
@@ -94,7 +94,7 @@ def stack_home_away_dataframe(df_data):
     df_away.columns = column_names_new
     df_total = df_home.append(df_away, ignore_index=True).sort_values(['game_id','season', 'matchday'], ascending=[True,True, True])
     df_total_sorted = df_total[['game_id','season','matchday','location','team','goals','goals_received','delta_goals','ht_goals','ht_goals_received','delta_ht_goals','shots_on','shots_on_test','delta_shots_on','shots_off','shots_off_test','delta_shots_off','possession','delta_possession','fouls','got_fouled','delta_fouls','yellow','delta_yellow','red','delta_red','corners','delta_corners','points','delta_points','pre_xg','delta_pre_xg','xg','delta_xg','odds','delta_odds']]
-    df_total_sorted['stadium_name'] = df_total_sorted.apply(lambda x: df_data.loc[x['game_id'] - 1, 'stadium_name'], axis=1)
+    df_total_sorted['city'] = df_total_sorted.apply(lambda x: df_data.loc[x['game_id'] - 1, 'city'], axis=1)
     return df_total_sorted
 
 def group_measure_by_attribute(aspect,attribute,measure):
@@ -307,8 +307,8 @@ def plt_attribute_correlation(aspect1, aspect2):
     ax.set(xlabel = aspect1, ylabel = aspect2)
     st.pyplot(fig, ax)
 
-def find_match_game_id(min_max,attribute,what,stadium):
-    df_find = df_data_filtered[df_data_filtered['stadium_name'] == stadium_dict[stadium]]
+def find_match_game_id(min_max,attribute,what,city):
+    df_find = df_data_filtered[df_data_filtered['city'] == city_dict[city]]
     search_attribute = label_fact_dict[attribute]
     if(what == "difference between teams"):
         search_attribute = "delta_" + label_fact_dict[attribute]
@@ -463,10 +463,10 @@ if all_teams_selected == 'Include all available teams':
     with row13_3:
         show_me_what = st.selectbox ("", ["by a team", "by both teams", "difference between teams"],key = 'one_both_diff')
     with row13_4:
-        show_me_stadium = st.selectbox("", list(stadium_dict.values()), key = 'stadium')
+        show_me_city = st.selectbox("", list(city_dict.values()), key = 'city')
     row14_spacer1, row14_1, row14_spacer2 = st.columns((.2, 7.1, .2))
     with row14_1:
-        return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_stadium)
+        return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city)
         df_match_result = build_matchfacts_return_string(return_game_id_value_team,show_me_hi_lo,show_me_aspect,show_me_what)     
     row15_spacer1, row15_1, row15_2, row15_3, row15_4, row15_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row15_1:
