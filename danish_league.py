@@ -6,7 +6,7 @@ import pandas as pd
 import pickle
 import time
 from matplotlib import pyplot as plt
-from  matplotlib.ticker import FuncFormatter
+from  matplotlib.ticker import FuncFormatter£
 import seaborn as sns
 import folium
 
@@ -607,7 +607,7 @@ if all_teams_selected == 'Include all available teams':
         elif zoom_level == "Region View":
             st.map(coordinates, zoom=8)
         elif zoom_level == "Country View":
-            st.map(coordinates, zoom=6)
+            st.map(coordinates, zoom=6, marker_scale=10)
         
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
