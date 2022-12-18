@@ -462,7 +462,7 @@ if all_teams_selected == 'Include all available teams':
     with row13_3:
         show_me_what = st.selectbox ("", ["by a team", "by both teams", "difference between teams"],key = 'one_both_diff')
     with row13_4:
-        show_me_stadium = st.selectbox("", list(stadium_dict.keys()), key = 'stadium')
+        show_me_stadium = st.selectbox("", list(stadium_dict.values()), key = 'stadium')
     row14_spacer1, row14_1, row14_spacer2 = st.columns((.2, 7.1, .2))
     with row14_1:
         return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,stadium)
