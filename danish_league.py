@@ -620,7 +620,7 @@ with row5_1:
     plot_x_per_team_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_team')
     specific_team_colors = st.checkbox("Use color scheme based on regions in Denmark")
 
-with row5_3:
+with row5_4:
     if specific_team_colors:
         region_color = {
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
@@ -638,7 +638,7 @@ with row5_3:
             st.markdown(region.replace('Region ',''))
 #            st.image(image)
             
-with row5_4:
+with row5_3:
     if specific_team_colors:
         region_color = {
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
