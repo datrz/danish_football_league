@@ -613,7 +613,7 @@ if all_teams_selected == 'Include all available teams':
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
 with row4_1:
     st.subheader('Analysis per Team')
-row5_spacer1, row5_1, row5_spacer2, row5_2, row5_spacer3, row5_3, row5_spacer4  = st.columns((.2, 1.8 , .2, 1, .1, 4, .2))
+row5_spacer1, row5_1, row5_spacer2, row5_2, row5_3, row5_spacer4, row5_4, row5_spacer5  = st.columns((.2, 1.8 , .2, .9, .1, .1, 4, .2))
 with row5_1:
     st.markdown('Investigate a variety of stats for each team. Which team scores the most goals per game?')    
     plot_x_per_team_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict_teams.keys()), key = 'attribute_team')
@@ -635,12 +635,17 @@ with row5_2:
         image[:, :] = [205, 92, 92]
 
         for region in region_color:
-            image[:, :] = region_color[region]
+#            image[:, :] = region_color[region]
             st.markdown(f'**{region}**: ')
+#            st.image(image)
+            
+with row5_3:
+        for region in region_color:
+            image[:, :] = region_color[region]
+#            st.markdown(f'**{region}**: ')
             st.image(image)
 
-
-with row5_3:
+with row5_4:
     if all_teams_selected != 'Select teams manually (choose below)' or selected_teams:
         plot_x_per_team(plot_x_per_team_selected, plot_x_per_team_type)
     else:
