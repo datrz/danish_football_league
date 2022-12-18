@@ -450,6 +450,7 @@ st.text('')
 ### DATA EXPLORER ###
 row12_spacer1, row12_1, row12_spacer2 = st.columns((.2, 7.1, .2))
 with row12_1:
+    st.dataframe(df_stacked)
     st.subheader('Match Finder')
     st.markdown('Show the (or a) match with the...')  
 if all_teams_selected == 'Include all available teams':
