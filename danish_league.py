@@ -451,7 +451,7 @@ with row12_1:
     st.subheader('Match Finder')
     st.markdown('Show the (or a) match with the...')  
 if all_teams_selected == 'Include all available teams':
-    row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3, row13_3, row13_4, row13_spacer4  = st.columns((.2, 1.6, .2, 1.6, .2, 1.6, .2, 1.6, .2))
+    row13_spacer1, row13_1, row13_spacer2, row13_2, row13_spacer3, row13_3, row13_4, row13_spacer4  = st.columns((.2, 1.6, .2, 1.6, .3, 1.6, .2, 1.6, .2))
     with row13_1:
         show_me_hi_lo = st.selectbox ("", ["Maximum","Minimum"],key = 'hi_lo') 
     with row13_2:
