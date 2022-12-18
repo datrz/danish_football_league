@@ -595,10 +595,9 @@ if all_teams_selected == 'Include all available teams':
         coordinates = pd.DataFrame(np.column_stack([longitude, latitude]), columns=['lat', 'lon'])
 
         st.markdown(f'🇩🇰 **Match** with index {return_game_id_value_team[0]} was played at **{stadium_name}, {city[0]}, {reg[0]}** and **{attendance1} fans** watched the game on the stadium')
-        st.warning('If you zoom in/out too much, change the parameters in the Match Finder to fix the Zoom on the map')
         
         zoom_level = st.selectbox(
-            "Zoom Level",
+            "Zoom Level. If you zoom in/out too much, change the parameters in the Match Finder to fix the Zoom on the map",
             ["Stadium View", "City View", "Region View", "Country View"], index=0
         )
         if zoom_level == "Stadium View":
