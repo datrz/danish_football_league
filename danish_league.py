@@ -23,25 +23,25 @@ label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_po
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"winning odds":"odds","pre match expected goals":"pre_xg", "post match expected goals":"xg", "shots on target":'shots_on','shots off target':'shots_off',"corners":'corners',"possession ratio":'possession',"fouls":'fouls',"yellow cards":'yellow',"red cards":'red'}
 color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#30276E', 'Viborg':'#00A99D'}
 city_dict = {
-    'Aarhus': 'Aarhus Stadium',
-    'Viborg': 'Viborg Stadium',
-    'Odense': 'Odense Stadium',
-    'Brondby Kommune': 'Brondby Kommune Stadium',
-    'Aalborg': 'Aalborg Stadium',
-    'Esbjerg': 'Esbjerg Stadium',
-    'Farum': 'Farum Stadium',
-    'Slagelse': 'Slagelse Stadium',
-    'Randers': 'Randers Stadium',
-    'Haderslev': 'Haderslev Stadium',
-    'Herning': 'Herning Stadium',
-    'Kobenhavn': 'Kobenhavn Stadium',
-    'Silkeborg': 'Silkeborg Stadium',
-    'Hobro': 'Hobro Stadium',
-    'Horsens': 'Horsens Stadium',
-    'Kongens Lyngby': 'Kongens Lyngby Stadium',
-    'Helsingor': 'Helsingor Stadium',
-    'Vejle': 'Vejle Stadium',
-    'Hjorring': 'Hjorring Stadium'
+    'Aarhus': 'on Stadium in Aarhus',
+    'Viborg': 'on Stadium in Viborg',
+    'Odense': 'on Stadium in Odense',
+    'Brondby Kommune': 'on Stadium in Brondby Kommune',
+    'Aalborg': 'on Stadium in Aalborg',
+    'Esbjerg': 'on Stadium in Esbjerg',
+    'Farum': 'on Stadium in Farum',
+    'Slagelse': 'on Stadium in Slagelse',
+    'Randers': 'on Stadium in Randers',
+    'Haderslev': 'on Stadium in Haderslev',
+    'Herning': 'on Stadium in Herning',
+    'Kobenhavn': 'on Stadium in Kobenhavn',
+    'Silkeborg': 'on Stadium in Silkeborg',
+    'Hobro': 'on Stadium in Hobro',
+    'Horsens': 'on Stadium in Horsens',
+    'Kongens Lyngby': 'on Stadium in Kongens Lyngby',
+    'Helsingor': 'on Stadium in Helsingor',
+    'Vejle': 'on Stadium in Vejle',
+    'Hjorring': 'on Stadium in Hjorring'
 }
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
@@ -485,7 +485,7 @@ if all_teams_selected == 'Include all available teams':
         show_me_city = st.selectbox("", list(city_dict.values()), key = 'city')
     row14_spacer1, row14_1, row14_spacer2 = st.columns((.2, 7.1, .2))
     with row14_1:
-        return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace(" Stadium",""))
+        return_game_id_value_team = find_match_game_id(show_me_hi_lo,show_me_aspect,show_me_what,show_me_city.replace("on Stadium in ",""))
         df_match_result = build_matchfacts_return_string(return_game_id_value_team,show_me_hi_lo,show_me_aspect,show_me_what)     
     row15_spacer1, row15_1, row15_2, row15_3, row15_4, row15_spacer2  = st.columns((0.5, 1.5, 1.5, 1, 2, 0.5))
     with row15_1:
