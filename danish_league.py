@@ -308,13 +308,13 @@ def plt_attribute_correlation(aspect1, aspect2):
 
 def find_match_game_id(min_max,attribute,what,stadium):
     df_find = df_data_filtered
+    df_find = df_find[df_find['stadium_name'][0] == stadium_dict[stadium]]
     search_attribute = label_fact_dict[attribute]
     if(what == "difference between teams"):
         search_attribute = "delta_" + label_fact_dict[attribute]
         df_find[search_attribute] = df_find[search_attribute].abs()
     if(what == "by both teams"):
         df_find = df_data_filtered.groupby(['game_id'], as_index=False).sum()
-    df_find = df_find[df_find['stadium_name'] == stadium_dict[stadium]]
     column = df_find[search_attribute]
     index = 0
     if(min_max == "Minimum"):
