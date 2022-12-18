@@ -9,6 +9,7 @@ from matplotlib import pyplot as plt
 from  matplotlib.ticker import FuncFormatter
 import seaborn as sns
 import folium
+import math
 
 
 st.set_page_config(layout="wide")
@@ -607,7 +608,26 @@ if all_teams_selected == 'Include all available teams':
         elif zoom_level == "Region View":
             st.map(coordinates, zoom=8)
         elif zoom_level == "Country View":
-            st.map(coordinates, zoom=6, marker_scale=10)
+            # Latitude/longitude of center point
+            center_lat = coordinates[0]
+            center_long = coordinates[1]
+
+            # Radius of circle, in km
+            radius = 10.0
+
+            # List to store coordinates
+            coordinates_circle = []
+
+            # Calculate coordinates
+            for angle in range(0,360):
+                bearing = math.radians(angle)
+                dest_lat  = math.asin( math.sin(center_lat)*math.cos(radius/6371.0) +
+                    math.cos(center_lat)*math.sin(radius/6371.0)*math.cos(bearing))
+                dest_long = center_long + math.atan2(math.sin(bearing)*math.sin(radius/6371.0)*math.cos(center_lat),
+                    math.cos(radius/6371.0)-math.sin(center_lat)*math.sin(dest_lat))
+                coordinates.append((round(math.degrees(dest_lat),6), round(math.degrees(dest_long),6)))
+
+            st.map(coordinates_circle, zoom=6)
         
 ### TEAM ###
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
