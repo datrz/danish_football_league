@@ -636,7 +636,7 @@ with row5_3:
 
         for region in region_color:
 #            image[:, :] = region_color[region]
-            st.markdown(region.replace("Region "))
+            st.markdown(str(region).replace("Region "))
 #            st.image(image)
             
 with row5_2:
