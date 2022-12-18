@@ -21,7 +21,7 @@ label_attr_dict = {"Goals":"goals", "Points":"points","Halftime Goals":"ht_goals
 label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received","Points received":"points","Halftime Goals Scored":"ht_goals","Halftime Goals Received":"halftime_goals_received", "Ball Possession":"possession", "Fouls Committed":"fouls", "Red Cards":"red", "Yellow Cards":"yellow", "Corners":"corners", "Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg", "Winning odds":"odds"}
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on target":"delta_shots_on","Shots off target":"delta_shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow Cards":"delta_yellow","Red Cards":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"winning odds":"odds","pre match expected goals":"pre_xg", "post match expected goals":"xg", "shots on target":'shots_on','shots off target':'shots_off',"corners":'corners',"possession ratio":'possession',"fouls":'fouls',"yellow Cards":'yellow',"Red Cards":'red'}
-color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#0088CC', 'Viborg':'#00A99D'}
+color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#30276E', 'Viborg':'#00A99D'}
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
     unique_seasons = np.unique(df_data.season).tolist()
@@ -568,7 +568,7 @@ with row5_1:
     if specific_team_colors:
         region_color = {
             'Region Hovedstaden': np.array([0, 117, 178],dtype=int),
-            'Region Sjaelland': np.array([0, 174, 214],dtype=int),
+            'Region Sjaelland': np.array([48, 39, 110],dtype=int),
             'Region Syddanmark': np.array([254, 127, 45],dtype=int),
             'Region Midtjylland': np.array([0, 169, 157],dtype=int),
             'Region Nordjylland': np.array([216, 0, 39],dtype=int)
