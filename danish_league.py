@@ -22,7 +22,7 @@ label_attr_dict_teams = {"Goals Scored":"goals","Goals Received":"goals_received
 label_attr_dict_correlation = {"Goals":"delta_goals","Points received":"delta_points","Halftime Goals":"delta_ht_goals","Shots on target":"delta_shots_on","Shots off target":"delta_shots_off","Possession":"delta_possession","Fouls":"delta_fouls","Yellow Cards":"delta_yellow","Red Cards":"delta_red","Corners":"delta_corners", "Pre Match Expected Goals":"delta_pre_xg", "Post Match Expected Goals":"delta_xg", "Winning odds":"delta_odds"}
 label_fact_dict = {"goals scored":'goals',"halftime goals scored":'ht_goals',"winning odds":"odds","pre match expected goals":"pre_xg", "post match expected goals":"xg", "shots on target":'shots_on','shots off target':'shots_off',"corners":'corners',"possession ratio":'possession',"fouls":'fouls',"yellow cards":'yellow',"red cards":'red'}
 color_dict = {'AGF': '#0088CC', 'AaB':'#CC3311', 'Brondby':'#0088CC', 'Esbjerg':'#EE7733', 'FC Helsingor':'#0088CC', 'Hobro':'#CC3311', 'Horsens':'#00A99D', 'Kobenhavn':'#0088CC', 'Lyngby':'#0088CC', 'Midtjylland':'#00A99D', 'Nordsjaelland':'#0088CC', 'OB':'#EE7733','Randers':'#00A99D', 'Silkeborg':'#00A99D', 'Sonderjyske':'#EE7733', 'Vejle':'#EE7733', 'Vendsyssel':'#CC3311', 'Vestsjaelland':'#30276E', 'Viborg':'#00A99D'}
-stadium_dict = {'Vejle Stadion': 'Vejle Stadion'}
+stadium_dict = {'Ceres Park': 'Ceres Park'}
 
 def get_unique_seasons_modified(df_data):
     #returns unique season list in the form "Season 13/14" for labels
