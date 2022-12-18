@@ -613,7 +613,7 @@ if all_teams_selected == 'Include all available teams':
 row4_spacer1, row4_1, row4_spacer2 = st.columns((.2, 7.1, .2))
 with row4_1:
     st.subheader('Analysis per Team')
-row5_spacer1, row5_1, row5_spacer2, row5_2, row5_3, row5_spacer4, row5_4, row5_spacer5  = st.columns((.2, 1.8 , .1, .3, .7, 0.01, 4.2, .2))
+row5_spacer1, row5_1, row5_spacer2, row5_2, row5_3, row5_4, row5_spacer5  = st.columns((.2, 1.8 , .1, .3, .7, 4.2, .2))
 with row5_1:
     st.markdown('Investigate a variety of stats for each team. Which team scores the most goals per game?')    
     plot_x_per_team_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict_teams.keys()), key = 'attribute_team')
