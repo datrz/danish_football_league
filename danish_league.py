@@ -333,7 +333,7 @@ def find_match_game_id(min_max,attribute,what,city):
         search_attribute = "delta_" + label_fact_dict[attribute]
         df_find[search_attribute] = df_find[search_attribute].abs()
     if(what == "by both teams"):
-        df_find = df_data_filtered.groupby(['game_id'], as_index=False).sum()
+        df_find = df_find.groupby(['game_id'], as_index=False).sum()
     column = df_find[search_attribute]
     index = 0
     if(min_max == "Minimum"):
