@@ -655,7 +655,7 @@ with row6_1:
     st.subheader('Analysis per Season')
 row7_spacer1, row7_1, row7_spacer2, row7_2, row7_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row7_1:
-    st.markdown('Investigate developments and trends. Which season had teams score the most goals?')    
+    st.markdown('Examine changes and patterns in different variables per team. For example, which time of year saw the highest number of goals scored by teams?')    
     plot_x_per_season_selected = st.selectbox ("Which attribute do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_season')
     plot_x_per_season_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_season')
 with row7_2:
@@ -667,7 +667,7 @@ with row7_2:
 ### MATCHDAY ###
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
 with row8_1:
-    st.subheader('Analysis per Matchday')
+    st.subheader('Investigate trends and changes in various metrics on per match day. Match day can be understood as a round in the season')
 row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row9_1:
     st.markdown('Investigate stats over the course of a season. At what point in the season do teams score the most goals? Do teams run less towards the end of the season?')    
@@ -689,7 +689,7 @@ with row10_1:
     st.subheader('Correlation of Game Stats')
 row11_spacer1, row11_1, row11_spacer2, row11_2, row11_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row11_1:
-    st.markdown('Investigate the correlation of attributes, but keep in mind correlation does not imply causation. Do teams that run more than their opponents also score more goals? Do teams that have more shots than their opponents have more corners?')    
+    st.markdown('Examine the relationship between various team attributes, bearing in mind that correlation does not necessarily imply causation. For example, do teams that attempt more shots than their opponents also earn more corners? Do teams with higher possession rates tend to score more goals?')    
     corr_type = st.selectbox ("What type of correlation plot do you want to see?", corr_plot_types)
     y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
