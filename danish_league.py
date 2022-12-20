@@ -667,10 +667,10 @@ with row7_2:
 ### MATCHDAY ###
 row8_spacer1, row8_1, row8_spacer2 = st.columns((.2, 7.1, .2))
 with row8_1:
-    st.subheader('Investigate trends and changes in various metrics on per match day. Match day can be understood as a round in the season')
+    st.subheader('Analysis per Matchday')
 row9_spacer1, row9_1, row9_spacer2, row9_2, row9_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row9_1:
-    st.markdown('Investigate stats over the course of a season. At what point in the season do teams score the most goals? Do teams run less towards the end of the season?')    
+    st.markdown('Investigate trends and changes in various metrics on per match day. Match day can be understood as a round in the season')
     plot_x_per_matchday_selected = st.selectbox ("Which aspect do you want to analyze?", list(label_attr_dict.keys()), key = 'attribute_matchday')
     plot_x_per_matchday_type = st.selectbox ("Which measure do you want to analyze?", types, key = 'measure_matchday')
 with row9_2:
