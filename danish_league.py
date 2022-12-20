@@ -687,9 +687,11 @@ corr_plot_types = ["Regression Plot (Recommended)","Standard Scatter Plot"] #rem
 row10_spacer1, row10_1, row10_spacer2 = st.columns((.2, 7.1, .2))
 with row10_1:
     st.subheader('Correlation of Game Stats')
+    st.warning('Remember! Correlation does not necessarily imply causation')
+
 row11_spacer1, row11_1, row11_spacer2, row11_2, row11_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row11_1:
-    st.markdown('Examine the relationship between various team attributes, bearing in mind that correlation does not necessarily imply causation. For example, do teams that attempt more shots than their opponents also earn more corners? Do teams with higher possession rates tend to score more goals?')    
+    st.markdown('Examine the relationship between various team attributes. For example, do teams that attempt more shots than their opponents also earn more corners? Do teams with higher possession rates tend to score more goals?')    
     corr_type = st.selectbox ("What type of correlation plot do you want to see?", corr_plot_types)
     y_axis_aspect2 = st.selectbox ("Which attribute do you want on the y-axis?", list(label_attr_dict_correlation.keys()))
     x_axis_aspect1 = st.selectbox ("Which attribute do you want on the x-axis?", list(label_attr_dict_correlation.keys()))
