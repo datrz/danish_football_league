@@ -687,7 +687,7 @@ corr_plot_types = ["Regression Plot (Recommended)","Standard Scatter Plot"] #rem
 row10_spacer1, row10_1, row10_spacer2 = st.columns((.2, 7.1, .2))
 with row10_1:
     st.subheader('Correlation of Game Stats')
-    st.warning('Remember! Correlation does not necessarily imply causation')
+    st.warning('Remember! Correlation does not necessarily imply causation.')
 
 row11_spacer1, row11_1, row11_spacer2, row11_2, row11_spacer3  = st.columns((.2, 2.3, .4, 4.4, .2))
 with row11_1:
