@@ -1,3 +1,3 @@
 # Superliga Dashboard
 
-[LINK TO THE STREAMLIT DASHBOARD](https://danish-football-league.streamlit.app/)
+[Link to the Streamlit dashboard](https://danish-football-league.streamlit.app/)
