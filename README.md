@@ -5,4 +5,5 @@ Try it out by clicking the link below.
 
 **Note:** The Streamlit link, may have to be rebooted. It should not take more than 30 seconds.
 
-[Link to the Streamlit dashboard](https://danish-football-league.streamlit.app/){:target="_blank"}
+[Link to the Streamlit dashboard](https://danish-football-league.streamlit.app/)
+
