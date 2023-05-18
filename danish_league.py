@@ -14,7 +14,7 @@ import folium
 st.set_page_config(layout="wide")
 
 ### Data Import ###
-df_database = pd.read_csv("./data/data9.csv")
+df_database = pd.read_csv("./data/data8.csv")
 #geo = pd.read_csv("./data/geo.csv") 
 types = ["Total","Mean","Median","Minimum","Maximum"]
 label_attr_dict = {"Goals":"goals","Halftime Goals":"ht_goals","Winning odds":"odds","Pre Match Expected Goals":"pre_xg", "Post Match Expected Goals":"xg","Shots on target":"shots_on", "Shots off target":"shots_off","Corners":"corners","Ball Possession":"possession", "Fouls Committed":"fouls", "Yellow Cards":"yellow", "Red Cards":"red","Points":"points",}
